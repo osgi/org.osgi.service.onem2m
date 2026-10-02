@@ -1,0 +1,8 @@
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.impl.service.onem2m/src/main/java/org/osgi/impl/service/onem2m/Activator.java
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.impl.service.onem2m/src/main/java/org/osgi/impl/service/onem2m/ServiceLayerFactoryImpl.java
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.impl.service.onem2m/src/main/java/org/osgi/impl/service/onem2m/protocol/ServiceLayerUtil.java
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.impl.service.onem2m/src/main/java/org/osgi/impl/service/onem2m/protocol/service/CseService.java
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.impl.service.onem2m/src/main/java/org/osgi/impl/service/onem2m/protocol/service/NotificationService.java
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.impl.service.onem2m/src/main/java/org/osgi/impl/service/onem2m/protocol/service/ServiceLayerImplService.java
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.impl.service.onem2m/src/main/java/org/osgi/impl/service/onem2m/serialization/BaseSerialize.java
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.impl.service.onem2m/src/main/java/org/osgi/impl/service/onem2m/serialization/LongShortConverter.java

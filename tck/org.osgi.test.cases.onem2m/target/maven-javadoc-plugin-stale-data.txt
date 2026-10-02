@@ -1,0 +1,92 @@
+@options
+@packages
+-classpath
+'/home/stbischof/.m2/repository/org/assertj/assertj-core/3.23.1/assertj-core-3.23.1.jar:/home/stbischof/.m2/repository/net/bytebuddy/byte-buddy/1.12.10/byte-buddy-1.12.10.jar:/home/stbischof/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar:/home/stbischof/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/stbischof/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar:/home/stbischof/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/stbischof/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar:/home/stbischof/.m2/repository/org/osgi/tck/org.osgi.test.support/0.0.1-SNAPSHOT/org.osgi.test.support-0.0.1-SNAPSHOT.jar:/home/stbischof/.m2/repository/org/apache/servicemix/bundles/org.apache.servicemix.bundles.junit/4.13.2_1/org.apache.servicemix.bundles.junit-4.13.2_1.jar:/home/stbischof/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/stbischof/.m2/repository/org/osgi/org.osgi.annotation.versioning/1.1.2/org.osgi.annotation.versioning-1.1.2.jar:/home/stbischof/.m2/repository/org/osgi/org.osgi.service.log/1.5.0/org.osgi.service.log-1.5.0.jar:/home/stbischof/.m2/repository/org/osgi/org.osgi.util.converter/1.0.9/org.osgi.util.converter-1.0.9.jar:/home/stbischof/.m2/repository/org/osgi/org.osgi.util.function/1.0.0/org.osgi.util.function-1.0.0.jar:/home/stbischof/.m2/repository/org/osgi/org.osgi.test.common/1.2.0/org.osgi.test.common-1.2.0.jar:/home/stbischof/.m2/repository/org/osgi/org.osgi.test.junit5/1.2.0/org.osgi.test.junit5-1.2.0.jar:/home/stbischof/.m2/repository/org/osgi/org.osgi.test.assertj.framework/1.2.0/org.osgi.test.assertj.framework-1.2.0.jar:/home/stbischof/.m2/repository/org/osgi/org.osgi.framework/1.10.0/org.osgi.framework-1.10.0.jar:/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/api/target/org.osgi.service.onem2m-1.0.1-SNAPSHOT.jar:/home/stbischof/.m2/repository/org/osgi/org.osgi.annotation.bundle/2.0.0/org.osgi.annotation.bundle-2.0.0.jar:/home/stbischof/.m2/repository/org/osgi/org.osgi.dto/1.1.1/org.osgi.dto-1.1.1.jar:/home/stbischof/.m2/repository/org/osgi/org.osgi.util.promise/1.3.0/org.osgi.util.promise-1.3.0.jar:/home/stbischof/.m2/repository/org/osgi/osgi.annotation/8.1.0/osgi.annotation-8.1.0.jar:/home/stbischof/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar'
+-encoding
+'UTF-8'
+-protected
+--release
+8
+-sourcepath
+'/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/src/main/java:/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/generated-sources/annotations'
+-author
+-bottom
+'Copyright &#169; 1980 <a href="https://www.eclipse.org/">Eclipse Foundation</a>. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs'
+-docencoding
+'UTF-8'
+-Xdoclint:none
+-doctitle
+'org.osgi.test.cases.onem2m 1.0.1-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' '/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/javadoc-bundle-options'
+-linkoffline
+'https://projects.eclipse.org/projects/technology.osgi/org.osgi.service.onem2m.reactor/org.osgi.service.onem2m/apidocs' '/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/api/target/apidocs'
+-notimestamp
+-tag
+"Immutable:t:Immutable"
+-tag
+"ThreadSafe:t:ThreadSafe"
+-tag
+"NotThreadSafe:t:NotThreadSafe"
+-tag
+"GuardedBy:mf:Guarded By:"
+-tag
+"security:m:Required Permissions"
+-tag
+"noimplement:t:Consumers of this API must not implement this interface"
+-tag
+"implNote:a:Implementation Note:"
+-use
+-version
+-windowtitle
+'org.osgi.test.cases.onem2m 1.0.1-SNAPSHOT API'
+org.osgi.test.cases.onem2m.junit
+/home/stbischof/.m2/repository/org/assertj/assertj-core/3.23.1/assertj-core-3.23.1.jar = 1654017732000
+/home/stbischof/.m2/repository/net/bytebuddy/byte-buddy/1.12.10/byte-buddy-1.12.10.jar = 1651391532000
+/home/stbischof/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar = 1638113945000
+/home/stbischof/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar = 1559849067000
+/home/stbischof/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar = 1638113947000
+/home/stbischof/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar = 1624798415000
+/home/stbischof/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar = 1638113966000
+/home/stbischof/.m2/repository/org/osgi/tck/org.osgi.test.support/0.0.1-SNAPSHOT/org.osgi.test.support-0.0.1-SNAPSHOT.jar = 1788283843000
+/home/stbischof/.m2/repository/org/apache/servicemix/bundles/org.apache.servicemix.bundles.junit/4.13.2_1/org.apache.servicemix.bundles.junit-4.13.2_1.jar = 1614582078000
+/home/stbischof/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar = 1341868082000
+/home/stbischof/.m2/repository/org/osgi/org.osgi.annotation.versioning/1.1.2/org.osgi.annotation.versioning-1.1.2.jar = 1634136809000
+/home/stbischof/.m2/repository/org/osgi/org.osgi.service.log/1.5.0/org.osgi.service.log-1.5.0.jar = 1607402552000
+/home/stbischof/.m2/repository/org/osgi/org.osgi.util.converter/1.0.9/org.osgi.util.converter-1.0.9.jar = 1644360816000
+/home/stbischof/.m2/repository/org/osgi/org.osgi.util.function/1.0.0/org.osgi.util.function-1.0.0.jar = 1439906642000
+/home/stbischof/.m2/repository/org/osgi/org.osgi.test.common/1.2.0/org.osgi.test.common-1.2.0.jar = 1657649209000
+/home/stbischof/.m2/repository/org/osgi/org.osgi.test.junit5/1.2.0/org.osgi.test.junit5-1.2.0.jar = 1657649208000
+/home/stbischof/.m2/repository/org/osgi/org.osgi.test.assertj.framework/1.2.0/org.osgi.test.assertj.framework-1.2.0.jar = 1657649212000
+/home/stbischof/.m2/repository/org/osgi/org.osgi.framework/1.10.0/org.osgi.framework-1.10.0.jar = 1607377478000
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/api/target/org.osgi.service.onem2m-1.0.1-SNAPSHOT.jar = 1790091261355
+/home/stbischof/.m2/repository/org/osgi/org.osgi.annotation.bundle/2.0.0/org.osgi.annotation.bundle-2.0.0.jar = 1644360733000
+/home/stbischof/.m2/repository/org/osgi/org.osgi.dto/1.1.1/org.osgi.dto-1.1.1.jar = 1607377677000
+/home/stbischof/.m2/repository/org/osgi/org.osgi.util.promise/1.3.0/org.osgi.util.promise-1.3.0.jar = 1671548233000
+/home/stbischof/.m2/repository/org/osgi/osgi.annotation/8.1.0/osgi.annotation-8.1.0.jar = 1644360731000
+/home/stbischof/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar = 1644327230000
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/src/main/java = 1790012133336
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/generated-sources/annotations = 1790091317301
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/element-list = 1790093500941
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/overview-tree.html = 1790093501107
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/allclasses-index.html = 1790093501156
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/allpackages-index.html = 1790093501164
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/module-search-index.js = 1790093501166
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/package-search-index.js = 1790093501168
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/type-search-index.js = 1790093501169
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/member-search-index.js = 1790093501170
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/tag-search-index.js = 1790093501171
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/index-all.html = 1790093501255
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/search.html = 1790093501271
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/index.html = 1790093501279
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/help-doc.html = 1790093501334
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/stylesheet.css = 1790093501341
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/script.js = 1790093501344
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/copy.svg = 1790093501349
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/link.svg = 1790093501352
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/search.js = 1790093501358
+/home/stbischof/git/OSGI_MIGRATE/osgi_target/org.osgi.service.onem2m/tck/org.osgi.test.cases.onem2m/target/apidocs/search-page.js = 1790093501361

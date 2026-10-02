@@ -1,0 +1,2621 @@
+<?xml version='1.0' encoding='utf-8'?>
+<top>
+  <package name='org.osgi.service.onem2m' fqn='org.osgi.service.onem2m' qn='org.osgi.service.onem2m'>
+<org.osgi.annotation.versioning.Version><value>1.0</value>
+</org.osgi.annotation.versioning.Version>
+   <lead>
+Service Layer API for oneM2M Specification Package Version 1.0.
+   </lead>
+   <description>
+Service Layer API for oneM2M Specification Package Version 1.0.
+ <p>
+ Bundles wishing to use this package must list the package in the
+ Import-Package header of the bundle's manifest. This package has two types of
+ users: the consumers that use the API in this package and the providers that
+ implement the API in this package.
+ </p><p>
+ Example import for consumers using the API in this package:
+ </p><p>
+ {@code  Import-Package: org.osgi.service.onem2m; version="[1.0,2.0)"}
+ </p><p>
+ Example import for providers implementing the API in this package:
+ </p><p>
+ {@code  Import-Package: org.osgi.service.onem2m; version="[1.0,1.1)"}</p>
+   </description>
+<author>@author $Id: 35fe4dd48ffd5003b0292d81da82a7c5c81c4590 $</author>
+  <class name='NotificationListener' fqn='org.osgi.service.onem2m.NotificationListener' qn='NotificationListener' package='org.osgi.service.onem2m' typeParam='' modifiers='public abstract' interface='yes' kind='INTERFACE'>
+<org.osgi.annotation.versioning.ConsumerType></org.osgi.annotation.versioning.ConsumerType>
+   <lead>
+Interface to receive notification from other oneM2M entities.
+   </lead>
+   <description>
+Interface to receive notification from other oneM2M entities.
+ <p>
+ Application that receives notification must implement this interface and
+ register to OSGi service registry. No service property is required.</p>
+   </description>
+
+    <method name='notified' fqn='org.osgi.service.onem2m.NotificationListener.notified' qn='NotificationListener.notified(RequestPrimitiveDTO)' package='org.osgi.service.onem2m' modifiers='public abstract' typeName='void' qualifiedTypeName='void' typeArgs='' dimension='' signature='(org.osgi.service.onem2m.dto.RequestPrimitiveDTO)' flatSignature='(RequestPrimitiveDTO)'>
+   <lead>
+receive notification.
+   </lead>
+   <description>
+receive notification.
+   </description>
+
+<param name='request'>request primitive</param>
+
+
+
+
+    <parameter name='request' dimension='' typeName='RequestPrimitiveDTO' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO' varargs='false'/>
+     </method>
+  </class>
+  <class name='OneM2MException' fqn='org.osgi.service.onem2m.OneM2MException' qn='OneM2MException' package='org.osgi.service.onem2m' typeParam='' modifiers='public class' superclass='IOException' kind='CLASS'>
+   <lead>
+General Exception for oneM2M.
+   </lead>
+   <description>
+General Exception for oneM2M.
+   </description>
+
+    <method name='OneM2MException' fqn='org.osgi.service.onem2m.OneM2MException.OneM2MException' qn='OneM2MException.OneM2MException(String,int)' package='org.osgi.service.onem2m' typeArgs='' modifiers='public' signature='(java.lang.String,int)' flatSignature='(String,int)' isConstructor='true'>
+   <lead>
+Construct a OneM2MException with a message and an error code.
+   </lead>
+   <description>
+Construct a OneM2MException with a message and an error code.
+   </description>
+
+<param name='message'>The exception message.</param>
+<param name='errorCode'>The exception error code.</param>
+
+
+
+
+    <parameter name='message' dimension='' typeName='String' fqn='java.lang.String' varargs='false'/>
+    <parameter name='errorCode' dimension='' typeName='int' fqn='int' varargs='false'/>
+     </method>
+    <method name='getErrorCode' fqn='org.osgi.service.onem2m.OneM2MException.getErrorCode' qn='OneM2MException.getErrorCode()' package='org.osgi.service.onem2m' modifiers='public' typeName='int' qualifiedTypeName='int' typeArgs='' dimension='' signature='()' flatSignature='()'>
+   <lead>
+Return the error code for the exception.
+   </lead>
+   <description>
+Return the error code for the exception.
+   </description>
+
+
+<return>The error code for the exception.</return>
+
+
+
+     </method>
+  </class>
+  <class name='ServiceLayer' fqn='org.osgi.service.onem2m.ServiceLayer' qn='ServiceLayer' package='org.osgi.service.onem2m' typeParam='' modifiers='public abstract' interface='yes' kind='INTERFACE'>
+<org.osgi.annotation.versioning.ProviderType></org.osgi.annotation.versioning.ProviderType>
+   <lead>
+Primary Interface for an oneM2M application entity to send request and get
+ response to/from other oneM2M entity.
+   </lead>
+   <description>
+Primary Interface for an oneM2M application entity to send request and get
+ response to/from other oneM2M entity.
+ <p>
+ It contains low level API and high level API. The only low level method is
+ request() and other methods are categorized as high level API.</p>
+   </description>
+
+    <method name='request' fqn='org.osgi.service.onem2m.ServiceLayer.request' qn='ServiceLayer.request(RequestPrimitiveDTO)' package='org.osgi.service.onem2m' modifiers='public abstract' typeName='Promise&lt;ResponsePrimitiveDTO&gt;' qualifiedTypeName='org.osgi.util.promise.Promise' typeArgs='' dimension='' signature='(org.osgi.service.onem2m.dto.RequestPrimitiveDTO)' flatSignature='(RequestPrimitiveDTO)'>
+   <lead>
+send a request and receive response.
+   </lead>
+   <description>
+send a request and receive response.
+ <p>
+ This method allows very raw data type access and it enables all possible
+ message exchanges among oneM2M entities. This is called the low level
+ API. This method allows all possible operation of oneM2M. For the return
+ type, OSGi Promise is used for allowing synchronous and asynchronous
+ calling manner.</p>
+   </description>
+
+<param name='request'>request primitive</param>
+
+<return>promise of ResponseDTO.</return>
+
+
+
+    <parameter name='request' dimension='' typeName='RequestPrimitiveDTO' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO' varargs='false'/>
+     </method>
+    <method name='create' fqn='org.osgi.service.onem2m.ServiceLayer.create' qn='ServiceLayer.create(String,ResourceDTO)' package='org.osgi.service.onem2m' modifiers='public abstract' typeName='Promise&lt;ResourceDTO&gt;' qualifiedTypeName='org.osgi.util.promise.Promise' typeArgs='' dimension='' signature='(java.lang.String,org.osgi.service.onem2m.dto.ResourceDTO)' flatSignature='(String,ResourceDTO)'>
+   <lead>
+create resource
+   </lead>
+   <description>
+create resource
+ <p>
+ The create() method is a method to create new resource under specified
+ uri. The second argument resource is expression of resource to be
+ generated. The resourceType field of the resourceDTO must be assigned.
+ For other fields depends on resource type. Section 7.4 of TS-00004
+ specifies the optionalities of the fields.</p>
+   </description>
+
+<param name='uri'>URI for parent resource of the resource being created.</param>
+<param name='resource'>resource data</param>
+
+<return>Promise of created resource</return>
+
+
+
+    <parameter name='uri' dimension='' typeName='String' fqn='java.lang.String' varargs='false'/>
+    <parameter name='resource' dimension='' typeName='ResourceDTO' fqn='org.osgi.service.onem2m.dto.ResourceDTO' varargs='false'/>
+     </method>
+    <method name='retrieve' fqn='org.osgi.service.onem2m.ServiceLayer.retrieve' qn='ServiceLayer.retrieve(String)' package='org.osgi.service.onem2m' modifiers='public abstract' typeName='Promise&lt;ResourceDTO&gt;' qualifiedTypeName='org.osgi.util.promise.Promise' typeArgs='' dimension='' signature='(java.lang.String)' flatSignature='(String)'>
+   <lead>
+retrieve resource
+   </lead>
+   <description>
+retrieve resource
+ <p>
+ retrieve resource on URI specified by uri argument. This method retrieve
+ all attributes of the resource.</p>
+   </description>
+
+<param name='uri'>URI for retrieving resource</param>
+
+<return>retrieved resource data</return>
+
+
+
+    <parameter name='uri' dimension='' typeName='String' fqn='java.lang.String' varargs='false'/>
+     </method>
+    <method name='retrieve' fqn='org.osgi.service.onem2m.ServiceLayer.retrieve' qn='ServiceLayer.retrieve(String,List)' package='org.osgi.service.onem2m' modifiers='public abstract' typeName='Promise&lt;ResourceDTO&gt;' qualifiedTypeName='org.osgi.util.promise.Promise' typeArgs='' dimension='' signature='(java.lang.String,java.util.List&lt;java.lang.String&gt;)' flatSignature='(String,List)'>
+   <lead>
+retrieve resource with selected attributes.
+   </lead>
+   <description>
+retrieve resource with selected attributes.
+ <p>
+ retrieve resource on URI specified by uri argument. This method retrieve
+ selected attributes by targetAttributes argument. The retrieve() methods
+ are methods to retrieve resource on URI specified by uri argument.</p>
+   </description>
+
+<param name='uri'>URI for retrieving resource</param>
+<param name='targetAttributes'>names of the target attribute</param>
+
+<return>retrieved resource data</return>
+
+
+
+    <parameter name='uri' dimension='' typeName='String' fqn='java.lang.String' varargs='false'/>
+    <parameter name='targetAttributes' dimension='' typeName='List&lt;String&gt;' fqn='java.util.List' varargs='false'/>
+     </method>
+    <method name='update' fqn='org.osgi.service.onem2m.ServiceLayer.update' qn='ServiceLayer.update(String,ResourceDTO)' package='org.osgi.service.onem2m' modifiers='public abstract' typeName='Promise&lt;ResourceDTO&gt;' qualifiedTypeName='org.osgi.util.promise.Promise' typeArgs='' dimension='' signature='(java.lang.String,org.osgi.service.onem2m.dto.ResourceDTO)' flatSignature='(String,ResourceDTO)'>
+   <lead>
+update resource
+   </lead>
+   <description>
+update resource
+ <p>
+ The update() method is a method to update resource on the URI specified
+ by uri argument. The resource argument holds attributes to be updated.
+ Attributes not to be updated shall not included in the argument.</p>
+   </description>
+
+<param name='uri'>URI for updating resource</param>
+<param name='resource'>data resource</param>
+
+<return>updated resource</return>
+
+
+
+    <parameter name='uri' dimension='' typeName='String' fqn='java.lang.String' varargs='false'/>
+    <parameter name='resource' dimension='' typeName='ResourceDTO' fqn='org.osgi.service.onem2m.dto.ResourceDTO' varargs='false'/>
+     </method>
+    <method name='delete' fqn='org.osgi.service.onem2m.ServiceLayer.delete' qn='ServiceLayer.delete(String)' package='org.osgi.service.onem2m' modifiers='public abstract' typeName='Promise&lt;Boolean&gt;' qualifiedTypeName='org.osgi.util.promise.Promise' typeArgs='' dimension='' signature='(java.lang.String)' flatSignature='(String)'>
+   <lead>
+delete resource
+   </lead>
+   <description>
+delete resource
+ <p>
+ delete resource on the URI specified by uri argument.</p>
+   </description>
+
+<param name='uri'>target URI for deleting resource</param>
+
+<return>promise of execution status</return>
+
+
+
+    <parameter name='uri' dimension='' typeName='String' fqn='java.lang.String' varargs='false'/>
+     </method>
+    <method name='discovery' fqn='org.osgi.service.onem2m.ServiceLayer.discovery' qn='ServiceLayer.discovery(String,FilterCriteriaDTO)' package='org.osgi.service.onem2m' modifiers='public abstract' typeName='Promise&lt;List&lt;String&gt;&gt;' qualifiedTypeName='org.osgi.util.promise.Promise' typeArgs='' dimension='' signature='(java.lang.String,org.osgi.service.onem2m.dto.FilterCriteriaDTO)' flatSignature='(String,FilterCriteriaDTO)'>
+   <lead>
+find resources with filter condition specified in fc argument.
+   </lead>
+   <description>
+find resources with filter condition specified in fc argument.
+ <p>
+ Discovery Result Type is kept as blank and default value of target CSE is
+ used for the parameter.</p>
+   </description>
+
+<param name='uri'>URI for resource tree to start the search</param>
+<param name='fc'>filter criteria selecting resources</param>
+
+<return>list of URIs matching the condition specified in fc</return>
+
+
+
+    <parameter name='uri' dimension='' typeName='String' fqn='java.lang.String' varargs='false'/>
+    <parameter name='fc' dimension='' typeName='FilterCriteriaDTO' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO' varargs='false'/>
+     </method>
+    <method name='discovery' fqn='org.osgi.service.onem2m.ServiceLayer.discovery' qn='ServiceLayer.discovery(String,FilterCriteriaDTO,DesiredIdentifierResultType)' package='org.osgi.service.onem2m' modifiers='public abstract' typeName='Promise&lt;List&lt;String&gt;&gt;' qualifiedTypeName='org.osgi.util.promise.Promise' typeArgs='' dimension='' signature='(java.lang.String,org.osgi.service.onem2m.dto.FilterCriteriaDTO,org.osgi.service.onem2m.dto.RequestPrimitiveDTO.DesiredIdentifierResultType)' flatSignature='(String,FilterCriteriaDTO,DesiredIdentifierResultType)'>
+   <lead>
+find resources with filter condition specified in fc argument.
+   </lead>
+   <description>
+find resources with filter condition specified in fc argument.
+ <p>
+ With this method application can specify desired identifier in result</p>
+   </description>
+
+<param name='uri'>URI for resource tree to start the search</param>
+<param name='fc'>filter criteria</param>
+<param name='drt'>Discovery Result Type (structured/unstructured)</param>
+
+<return>list of URIs matching the condition specified in fc</return>
+
+
+
+    <parameter name='uri' dimension='' typeName='String' fqn='java.lang.String' varargs='false'/>
+    <parameter name='fc' dimension='' typeName='FilterCriteriaDTO' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO' varargs='false'/>
+    <parameter name='drt' dimension='' typeName='DesiredIdentifierResultType' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.DesiredIdentifierResultType' varargs='false'/>
+     </method>
+    <method name='notify' fqn='org.osgi.service.onem2m.ServiceLayer.notify' qn='ServiceLayer.notify(String,NotificationDTO)' package='org.osgi.service.onem2m' modifiers='public abstract' typeName='Promise&lt;Boolean&gt;' qualifiedTypeName='org.osgi.util.promise.Promise' typeArgs='' dimension='' signature='(java.lang.String,org.osgi.service.onem2m.dto.NotificationDTO)' flatSignature='(String,NotificationDTO)'>
+   <lead>
+send notification
+   </lead>
+   <description>
+send notification
+ <p></p>
+   </description>
+
+<param name='uri'>uri of destination</param>
+<param name='notification'>content of notification</param>
+
+<return>Promise of notification execution status</return>
+
+
+
+    <parameter name='uri' dimension='' typeName='String' fqn='java.lang.String' varargs='false'/>
+    <parameter name='notification' dimension='' typeName='NotificationDTO' fqn='org.osgi.service.onem2m.dto.NotificationDTO' varargs='false'/>
+     </method>
+  </class>
+  </package>
+  <package name='org.osgi.service.onem2m.dto' fqn='org.osgi.service.onem2m.dto' qn='org.osgi.service.onem2m.dto'>
+<org.osgi.annotation.versioning.Version><value>1.0</value>
+</org.osgi.annotation.versioning.Version>
+   <lead>
+Service Layer Data Transfer Objects for oneM2M Specification Package Version
+ 1.0.
+   </lead>
+   <description>
+Service Layer Data Transfer Objects for oneM2M Specification Package Version
+ 1.0.
+ <p>
+ Bundles wishing to use this package must list the package in the
+ Import-Package header of the bundle's manifest. This package has two types of
+ users: the consumers that use the API in this package and the providers that
+ implement the API in this package.
+ </p><p>
+ Example import for consumers using the API in this package:
+ </p><p>
+ {@code  Import-Package: org.osgi.service.onem2m.dto; version="[1.0,2.0)"}
+ </p><p>
+ Example import for providers implementing the API in this package:
+ </p><p>
+ {@code  Import-Package: org.osgi.service.onem2m.dto; version="[1.0,1.1)"}</p>
+   </description>
+<author>@author $Id: abcc68cc3cf51637106bf473f5726db617ca742f $</author>
+  <class name='AttributeDTO' fqn='org.osgi.service.onem2m.dto.AttributeDTO' qn='AttributeDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+DTO expresses Attribute.
+   </lead>
+   <description>
+DTO expresses Attribute.
+ <p>
+ This class is typically used in FilterCriteriaDTO for expressing matching
+ condition.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.9</a><NotThreadSafe></NotThreadSafe>
+    <method name='AttributeDTO' fqn='org.osgi.service.onem2m.dto.AttributeDTO.AttributeDTO' qn='AttributeDTO.AttributeDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='name' fqn='org.osgi.service.onem2m.dto.AttributeDTO.name' qn='AttributeDTO.name' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Attribute name
+   </lead>
+   <description>
+Attribute name
+   </description>
+
+     </field>
+    <field name='value' fqn='org.osgi.service.onem2m.dto.AttributeDTO.value' qn='AttributeDTO.value' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Object' qualifiedTypeName='java.lang.Object' dimension=''>
+   <lead>
+Supposed value of the attribute
+   </lead>
+   <description>
+Supposed value of the attribute
+   </description>
+
+     </field>
+  </class>
+  <class name='ChildResourceRefDTO' fqn='org.osgi.service.onem2m.dto.ChildResourceRefDTO' qn='ChildResourceRefDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+DTO expresses ChildResourceRef.
+   </lead>
+   <description>
+DTO expresses ChildResourceRef.
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.29</a><a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L885-893">oneM2M
+      XSD childResourceRef</a><NotThreadSafe></NotThreadSafe>
+    <method name='ChildResourceRefDTO' fqn='org.osgi.service.onem2m.dto.ChildResourceRefDTO.ChildResourceRefDTO' qn='ChildResourceRefDTO.ChildResourceRefDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='uri' fqn='org.osgi.service.onem2m.dto.ChildResourceRefDTO.uri' qn='ChildResourceRefDTO.uri' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+URI to the child resource.
+   </lead>
+   <description>
+URI to the child resource.
+   </description>
+
+     </field>
+    <field name='name' fqn='org.osgi.service.onem2m.dto.ChildResourceRefDTO.name' qn='ChildResourceRefDTO.name' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+name of the child resource pointed to by the URI
+   </lead>
+   <description>
+name of the child resource pointed to by the URI
+   </description>
+
+     </field>
+    <field name='type' fqn='org.osgi.service.onem2m.dto.ChildResourceRefDTO.type' qn='ChildResourceRefDTO.type' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+resourceType of the child resource pointed to by the URI
+   </lead>
+   <description>
+resourceType of the child resource pointed to by the URI
+   </description>
+
+     </field>
+    <field name='specializationID' fqn='org.osgi.service.onem2m.dto.ChildResourceRefDTO.specializationID' qn='ChildResourceRefDTO.specializationID' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+resource type specialization of the child resource pointed to by the URI
+ in case type represents a flexContainer.
+   </lead>
+   <description>
+resource type specialization of the child resource pointed to by the URI
+ in case type represents a flexContainer. This is an optional field.
+   </description>
+
+     </field>
+  </class>
+  <class name='Constants' fqn='org.osgi.service.onem2m.dto.Constants' qn='Constants' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public final class' kind='CLASS'>
+   <lead>
+This class defines constants for resource types.
+   </lead>
+   <description>
+This class defines constants for resource types.
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.1</a>
+    <field name='RT_accessControlPolicy' fqn='org.osgi.service.onem2m.dto.Constants.RT_accessControlPolicy' qn='Constants.RT_accessControlPolicy' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='1'>
+   <lead>
+resource type for accessControlPolicy
+   </lead>
+   <description>
+resource type for accessControlPolicy
+   </description>
+
+     </field>
+    <field name='RT_AE' fqn='org.osgi.service.onem2m.dto.Constants.RT_AE' qn='Constants.RT_AE' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='2'>
+   <lead>
+resource type for AE
+   </lead>
+   <description>
+resource type for AE
+   </description>
+
+     </field>
+    <field name='RT_container' fqn='org.osgi.service.onem2m.dto.Constants.RT_container' qn='Constants.RT_container' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='3'>
+   <lead>
+resource type for container
+   </lead>
+   <description>
+resource type for container
+   </description>
+
+     </field>
+    <field name='RT_contentInstance' fqn='org.osgi.service.onem2m.dto.Constants.RT_contentInstance' qn='Constants.RT_contentInstance' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='4'>
+   <lead>
+resource type for contentInstance
+   </lead>
+   <description>
+resource type for contentInstance
+   </description>
+
+     </field>
+    <field name='RT_CSEBase' fqn='org.osgi.service.onem2m.dto.Constants.RT_CSEBase' qn='Constants.RT_CSEBase' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='5'>
+   <lead>
+resource type for CSEBase
+   </lead>
+   <description>
+resource type for CSEBase
+   </description>
+
+     </field>
+    <field name='RT_delivery' fqn='org.osgi.service.onem2m.dto.Constants.RT_delivery' qn='Constants.RT_delivery' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='6'>
+   <lead>
+resource type for delivery
+   </lead>
+   <description>
+resource type for delivery
+   </description>
+
+     </field>
+    <field name='RT_eventConfig' fqn='org.osgi.service.onem2m.dto.Constants.RT_eventConfig' qn='Constants.RT_eventConfig' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='7'>
+   <lead>
+resource type for eventConfig
+   </lead>
+   <description>
+resource type for eventConfig
+   </description>
+
+     </field>
+    <field name='RT_execInstance' fqn='org.osgi.service.onem2m.dto.Constants.RT_execInstance' qn='Constants.RT_execInstance' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='8'>
+   <lead>
+resource type for execInstance
+   </lead>
+   <description>
+resource type for execInstance
+   </description>
+
+     </field>
+    <field name='RT_group' fqn='org.osgi.service.onem2m.dto.Constants.RT_group' qn='Constants.RT_group' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='9'>
+   <lead>
+resource type for group
+   </lead>
+   <description>
+resource type for group
+   </description>
+
+     </field>
+    <field name='RT_locationPolicy' fqn='org.osgi.service.onem2m.dto.Constants.RT_locationPolicy' qn='Constants.RT_locationPolicy' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10'>
+   <lead>
+resource type for locationPolicy
+   </lead>
+   <description>
+resource type for locationPolicy
+   </description>
+
+     </field>
+    <field name='RT_m2mServiceSubscriptionProfile' fqn='org.osgi.service.onem2m.dto.Constants.RT_m2mServiceSubscriptionProfile' qn='Constants.RT_m2mServiceSubscriptionProfile' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='11'>
+   <lead>
+resource type for m2mServiceSubscriptionProfile
+   </lead>
+   <description>
+resource type for m2mServiceSubscriptionProfile
+   </description>
+
+     </field>
+    <field name='RT_mgmtCmd' fqn='org.osgi.service.onem2m.dto.Constants.RT_mgmtCmd' qn='Constants.RT_mgmtCmd' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='12'>
+   <lead>
+resource type for mgmtCmd
+   </lead>
+   <description>
+resource type for mgmtCmd
+   </description>
+
+     </field>
+    <field name='RT_mgmtObj' fqn='org.osgi.service.onem2m.dto.Constants.RT_mgmtObj' qn='Constants.RT_mgmtObj' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='13'>
+   <lead>
+resource type for mgmtObj
+   </lead>
+   <description>
+resource type for mgmtObj
+   </description>
+
+     </field>
+    <field name='RT_node' fqn='org.osgi.service.onem2m.dto.Constants.RT_node' qn='Constants.RT_node' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='14'>
+   <lead>
+resource type for node
+   </lead>
+   <description>
+resource type for node
+   </description>
+
+     </field>
+    <field name='RT_pollingChannel' fqn='org.osgi.service.onem2m.dto.Constants.RT_pollingChannel' qn='Constants.RT_pollingChannel' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='15'>
+   <lead>
+resource type for pollingChannel
+   </lead>
+   <description>
+resource type for pollingChannel
+   </description>
+
+     </field>
+    <field name='RT_remoteCSE' fqn='org.osgi.service.onem2m.dto.Constants.RT_remoteCSE' qn='Constants.RT_remoteCSE' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='16'>
+   <lead>
+resource type for remoteCSE
+   </lead>
+   <description>
+resource type for remoteCSE
+   </description>
+
+     </field>
+    <field name='RT_request' fqn='org.osgi.service.onem2m.dto.Constants.RT_request' qn='Constants.RT_request' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='17'>
+   <lead>
+resource type for request
+   </lead>
+   <description>
+resource type for request
+   </description>
+
+     </field>
+    <field name='RT_schedule' fqn='org.osgi.service.onem2m.dto.Constants.RT_schedule' qn='Constants.RT_schedule' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='18'>
+   <lead>
+resource type for schedule
+   </lead>
+   <description>
+resource type for schedule
+   </description>
+
+     </field>
+    <field name='RT_serviceSubscribedAppRule' fqn='org.osgi.service.onem2m.dto.Constants.RT_serviceSubscribedAppRule' qn='Constants.RT_serviceSubscribedAppRule' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='19'>
+   <lead>
+resource type for serviceSubscribedAppRule
+   </lead>
+   <description>
+resource type for serviceSubscribedAppRule
+   </description>
+
+     </field>
+    <field name='RT_serviceSubscribedNode' fqn='org.osgi.service.onem2m.dto.Constants.RT_serviceSubscribedNode' qn='Constants.RT_serviceSubscribedNode' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='20'>
+   <lead>
+resource type for serviceSubscribedNode
+   </lead>
+   <description>
+resource type for serviceSubscribedNode
+   </description>
+
+     </field>
+    <field name='RT_statsCollect' fqn='org.osgi.service.onem2m.dto.Constants.RT_statsCollect' qn='Constants.RT_statsCollect' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='21'>
+   <lead>
+resource type for statsCollect
+   </lead>
+   <description>
+resource type for statsCollect
+   </description>
+
+     </field>
+    <field name='RT_statsConfig' fqn='org.osgi.service.onem2m.dto.Constants.RT_statsConfig' qn='Constants.RT_statsConfig' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='22'>
+   <lead>
+resource type for
+   </lead>
+   <description>
+resource type for
+   </description>
+
+     </field>
+    <field name='RT_subscription' fqn='org.osgi.service.onem2m.dto.Constants.RT_subscription' qn='Constants.RT_subscription' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='23'>
+   <lead>
+resource type for statsConfig
+   </lead>
+   <description>
+resource type for statsConfig
+   </description>
+
+     </field>
+    <field name='RT_semanticDescriptor' fqn='org.osgi.service.onem2m.dto.Constants.RT_semanticDescriptor' qn='Constants.RT_semanticDescriptor' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='24'>
+   <lead>
+resource type for semanticDescriptor
+   </lead>
+   <description>
+resource type for semanticDescriptor
+   </description>
+
+     </field>
+    <field name='RT_notificationTargetMgmtPolicyRef' fqn='org.osgi.service.onem2m.dto.Constants.RT_notificationTargetMgmtPolicyRef' qn='Constants.RT_notificationTargetMgmtPolicyRef' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='25'>
+   <lead>
+resource type for notificationTargetMgmtPolicyRef
+   </lead>
+   <description>
+resource type for notificationTargetMgmtPolicyRef
+   </description>
+
+     </field>
+    <field name='RT_notificationTargetPolicy' fqn='org.osgi.service.onem2m.dto.Constants.RT_notificationTargetPolicy' qn='Constants.RT_notificationTargetPolicy' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='26'>
+   <lead>
+resource type for notificationTargetPolicy
+   </lead>
+   <description>
+resource type for notificationTargetPolicy
+   </description>
+
+     </field>
+    <field name='RT_policyDeletionRules' fqn='org.osgi.service.onem2m.dto.Constants.RT_policyDeletionRules' qn='Constants.RT_policyDeletionRules' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='27'>
+   <lead>
+resource type for policyDeletionRules
+   </lead>
+   <description>
+resource type for policyDeletionRules
+   </description>
+
+     </field>
+    <field name='RT_flexContainer' fqn='org.osgi.service.onem2m.dto.Constants.RT_flexContainer' qn='Constants.RT_flexContainer' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='28'>
+   <lead>
+resource type for flexContainer
+   </lead>
+   <description>
+resource type for flexContainer
+   </description>
+
+     </field>
+    <field name='RT_timeSeries' fqn='org.osgi.service.onem2m.dto.Constants.RT_timeSeries' qn='Constants.RT_timeSeries' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='29'>
+   <lead>
+resource type for timeSeries
+   </lead>
+   <description>
+resource type for timeSeries
+   </description>
+
+     </field>
+    <field name='RT_timeSeriesInstance' fqn='org.osgi.service.onem2m.dto.Constants.RT_timeSeriesInstance' qn='Constants.RT_timeSeriesInstance' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='30'>
+   <lead>
+resource type for timeSeriesInstance
+   </lead>
+   <description>
+resource type for timeSeriesInstance
+   </description>
+
+     </field>
+    <field name='RT_role' fqn='org.osgi.service.onem2m.dto.Constants.RT_role' qn='Constants.RT_role' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='31'>
+   <lead>
+resource type for role
+   </lead>
+   <description>
+resource type for role
+   </description>
+
+     </field>
+    <field name='RT_token' fqn='org.osgi.service.onem2m.dto.Constants.RT_token' qn='Constants.RT_token' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='32'>
+   <lead>
+resource type for token
+   </lead>
+   <description>
+resource type for token
+   </description>
+
+     </field>
+    <field name='RT_dynamicAuthorizationConsultation' fqn='org.osgi.service.onem2m.dto.Constants.RT_dynamicAuthorizationConsultation' qn='Constants.RT_dynamicAuthorizationConsultation' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='34'>
+   <lead>
+resource type for dynamicAuthorizationConsultation
+   </lead>
+   <description>
+resource type for dynamicAuthorizationConsultation
+   </description>
+
+     </field>
+    <field name='RT_authorizationDecision' fqn='org.osgi.service.onem2m.dto.Constants.RT_authorizationDecision' qn='Constants.RT_authorizationDecision' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='35'>
+   <lead>
+resource type for authorizationDecision
+   </lead>
+   <description>
+resource type for authorizationDecision
+   </description>
+
+     </field>
+    <field name='RT_authorizationPolicy' fqn='org.osgi.service.onem2m.dto.Constants.RT_authorizationPolicy' qn='Constants.RT_authorizationPolicy' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='36'>
+   <lead>
+resource type for authorizationPolicy
+   </lead>
+   <description>
+resource type for authorizationPolicy
+   </description>
+
+     </field>
+    <field name='RT_authorizationInformation' fqn='org.osgi.service.onem2m.dto.Constants.RT_authorizationInformation' qn='Constants.RT_authorizationInformation' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='37'>
+   <lead>
+resource type for authorizationInformation
+   </lead>
+   <description>
+resource type for authorizationInformation
+   </description>
+
+     </field>
+    <field name='RT_ontologyRepository' fqn='org.osgi.service.onem2m.dto.Constants.RT_ontologyRepository' qn='Constants.RT_ontologyRepository' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='38'>
+   <lead>
+resource type for ontologyRepository
+   </lead>
+   <description>
+resource type for ontologyRepository
+   </description>
+
+     </field>
+    <field name='RT_ontology' fqn='org.osgi.service.onem2m.dto.Constants.RT_ontology' qn='Constants.RT_ontology' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='39'>
+   <lead>
+resource type for ontology
+   </lead>
+   <description>
+resource type for ontology
+   </description>
+
+     </field>
+    <field name='RT_semanticMashupJobProfile' fqn='org.osgi.service.onem2m.dto.Constants.RT_semanticMashupJobProfile' qn='Constants.RT_semanticMashupJobProfile' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='40'>
+   <lead>
+resource type for semanticMashupJobProfile
+   </lead>
+   <description>
+resource type for semanticMashupJobProfile
+   </description>
+
+     </field>
+    <field name='RT_semanticMashupInstance' fqn='org.osgi.service.onem2m.dto.Constants.RT_semanticMashupInstance' qn='Constants.RT_semanticMashupInstance' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='41'>
+   <lead>
+resource type for semanticMashupInstance
+   </lead>
+   <description>
+resource type for semanticMashupInstance
+   </description>
+
+     </field>
+    <field name='RT_semanticMashupResult' fqn='org.osgi.service.onem2m.dto.Constants.RT_semanticMashupResult' qn='Constants.RT_semanticMashupResult' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='42'>
+   <lead>
+resource type for semanticMashupResult
+   </lead>
+   <description>
+resource type for semanticMashupResult
+   </description>
+
+     </field>
+    <field name='RT_AEContactList' fqn='org.osgi.service.onem2m.dto.Constants.RT_AEContactList' qn='Constants.RT_AEContactList' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='43'>
+   <lead>
+resource type for AEContactList
+   </lead>
+   <description>
+resource type for AEContactList
+   </description>
+
+     </field>
+    <field name='RT_AEContactListPerCSE' fqn='org.osgi.service.onem2m.dto.Constants.RT_AEContactListPerCSE' qn='Constants.RT_AEContactListPerCSE' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='44'>
+   <lead>
+resource type for AEContactListPerCSE
+   </lead>
+   <description>
+resource type for AEContactListPerCSE
+   </description>
+
+     </field>
+    <field name='RT_localMulticastGroup' fqn='org.osgi.service.onem2m.dto.Constants.RT_localMulticastGroup' qn='Constants.RT_localMulticastGroup' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='45'>
+   <lead>
+resource type for localMulticastGroup
+   </lead>
+   <description>
+resource type for localMulticastGroup
+   </description>
+
+     </field>
+    <field name='RT_multimediaSession' fqn='org.osgi.service.onem2m.dto.Constants.RT_multimediaSession' qn='Constants.RT_multimediaSession' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='46'>
+   <lead>
+resource type for multimediaSession
+   </lead>
+   <description>
+resource type for multimediaSession
+   </description>
+
+     </field>
+    <field name='RT_triggerRequest' fqn='org.osgi.service.onem2m.dto.Constants.RT_triggerRequest' qn='Constants.RT_triggerRequest' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='47'>
+   <lead>
+resource type for triggerRequest
+   </lead>
+   <description>
+resource type for triggerRequest
+   </description>
+
+     </field>
+    <field name='RT_crossResourceSubscription' fqn='org.osgi.service.onem2m.dto.Constants.RT_crossResourceSubscription' qn='Constants.RT_crossResourceSubscription' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='48'>
+   <lead>
+resource type for crossResourceSubscription
+   </lead>
+   <description>
+resource type for crossResourceSubscription
+   </description>
+
+     </field>
+    <field name='RT_backgroundDataTransfer' fqn='org.osgi.service.onem2m.dto.Constants.RT_backgroundDataTransfer' qn='Constants.RT_backgroundDataTransfer' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='49'>
+   <lead>
+resource type for backgroundDataTransfer
+   </lead>
+   <description>
+resource type for backgroundDataTransfer
+   </description>
+
+     </field>
+    <field name='RT_transactionMgmt' fqn='org.osgi.service.onem2m.dto.Constants.RT_transactionMgmt' qn='Constants.RT_transactionMgmt' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='50'>
+   <lead>
+resource type for transactionMgmt
+   </lead>
+   <description>
+resource type for transactionMgmt
+   </description>
+
+     </field>
+    <field name='RT_transaction' fqn='org.osgi.service.onem2m.dto.Constants.RT_transaction' qn='Constants.RT_transaction' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='51'>
+   <lead>
+resource type for transaction
+   </lead>
+   <description>
+resource type for transaction
+   </description>
+
+     </field>
+    <field name='RT_accessControlPolicyAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_accessControlPolicyAnnc' qn='Constants.RT_accessControlPolicyAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10001'>
+   <lead>
+resource type for accessControlPolicyAnnc
+   </lead>
+   <description>
+resource type for accessControlPolicyAnnc
+   </description>
+
+     </field>
+    <field name='RT_AEAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_AEAnnc' qn='Constants.RT_AEAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10002'>
+   <lead>
+resource type for AEAnnc
+   </lead>
+   <description>
+resource type for AEAnnc
+   </description>
+
+     </field>
+    <field name='RT_containerAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_containerAnnc' qn='Constants.RT_containerAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10003'>
+   <lead>
+resource type for containerAnnc
+   </lead>
+   <description>
+resource type for containerAnnc
+   </description>
+
+     </field>
+    <field name='RT_contentInstanceAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_contentInstanceAnnc' qn='Constants.RT_contentInstanceAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10004'>
+   <lead>
+resource type for contentInstanceAnnc
+   </lead>
+   <description>
+resource type for contentInstanceAnnc
+   </description>
+
+     </field>
+    <field name='RT_groupAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_groupAnnc' qn='Constants.RT_groupAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10009'>
+   <lead>
+resource type for groupAnnc
+   </lead>
+   <description>
+resource type for groupAnnc
+   </description>
+
+     </field>
+    <field name='RT_locationPolicyAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_locationPolicyAnnc' qn='Constants.RT_locationPolicyAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10010'>
+   <lead>
+resource type for locationPolicyAnnc
+   </lead>
+   <description>
+resource type for locationPolicyAnnc
+   </description>
+
+     </field>
+    <field name='RT_mgmtObjAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_mgmtObjAnnc' qn='Constants.RT_mgmtObjAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10013'>
+   <lead>
+resource type for mgmtObjAnnc
+   </lead>
+   <description>
+resource type for mgmtObjAnnc
+   </description>
+
+     </field>
+    <field name='RT_nodeAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_nodeAnnc' qn='Constants.RT_nodeAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10014'>
+   <lead>
+resource type for nodeAnnc
+   </lead>
+   <description>
+resource type for nodeAnnc
+   </description>
+
+     </field>
+    <field name='RT_remoteCSEAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_remoteCSEAnnc' qn='Constants.RT_remoteCSEAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10016'>
+   <lead>
+resource type for remoteCSEAnnc
+   </lead>
+   <description>
+resource type for remoteCSEAnnc
+   </description>
+
+     </field>
+    <field name='RT_scheduleAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_scheduleAnnc' qn='Constants.RT_scheduleAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10018'>
+   <lead>
+resource type for scheduleAnnc
+   </lead>
+   <description>
+resource type for scheduleAnnc
+   </description>
+
+     </field>
+    <field name='RT_semanticDescriptorAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_semanticDescriptorAnnc' qn='Constants.RT_semanticDescriptorAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10024'>
+   <lead>
+resource type for semanticDescriptorAnnc
+   </lead>
+   <description>
+resource type for semanticDescriptorAnnc
+   </description>
+
+     </field>
+    <field name='RT_flexContainerAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_flexContainerAnnc' qn='Constants.RT_flexContainerAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10028'>
+   <lead>
+resource type for flexContainerAnnc
+   </lead>
+   <description>
+resource type for flexContainerAnnc
+   </description>
+
+     </field>
+    <field name='RT_timeSeriesAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_timeSeriesAnnc' qn='Constants.RT_timeSeriesAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10029'>
+   <lead>
+resource type for timeSeriesAnnc
+   </lead>
+   <description>
+resource type for timeSeriesAnnc
+   </description>
+
+     </field>
+    <field name='RT_timeSeriesInstanceAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_timeSeriesInstanceAnnc' qn='Constants.RT_timeSeriesInstanceAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10030'>
+   <lead>
+resource type for timeSeriesInstanceAnnc
+   </lead>
+   <description>
+resource type for timeSeriesInstanceAnnc
+   </description>
+
+     </field>
+    <field name='RT_dynamicAuthorizationConsultationAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_dynamicAuthorizationConsultationAnnc' qn='Constants.RT_dynamicAuthorizationConsultationAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10034'>
+   <lead>
+resource type for dynamicAuthorizationConsultationAnnc
+   </lead>
+   <description>
+resource type for dynamicAuthorizationConsultationAnnc
+   </description>
+
+     </field>
+    <field name='RT_ontologyRepositoryAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_ontologyRepositoryAnnc' qn='Constants.RT_ontologyRepositoryAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10038'>
+   <lead>
+resource type for ontologyRepositoryAnnc
+   </lead>
+   <description>
+resource type for ontologyRepositoryAnnc
+   </description>
+
+     </field>
+    <field name='RT_ontologyAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_ontologyAnnc' qn='Constants.RT_ontologyAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10039'>
+   <lead>
+resource type for ontologyAnnc
+   </lead>
+   <description>
+resource type for ontologyAnnc
+   </description>
+
+     </field>
+    <field name='RT_semanticMashupJobProfileAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_semanticMashupJobProfileAnnc' qn='Constants.RT_semanticMashupJobProfileAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10040'>
+   <lead>
+resource type for semanticMashupJobProfileAnnc
+   </lead>
+   <description>
+resource type for semanticMashupJobProfileAnnc
+   </description>
+
+     </field>
+    <field name='RT_semanticMashupInstanceAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_semanticMashupInstanceAnnc' qn='Constants.RT_semanticMashupInstanceAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10041'>
+   <lead>
+resource type for semanticMashupInstanceAnnc
+   </lead>
+   <description>
+resource type for semanticMashupInstanceAnnc
+   </description>
+
+     </field>
+    <field name='RT_semanticMashupResultAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_semanticMashupResultAnnc' qn='Constants.RT_semanticMashupResultAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10042'>
+   <lead>
+resource type for semanticMashupResultAnnc
+   </lead>
+   <description>
+resource type for semanticMashupResultAnnc
+   </description>
+
+     </field>
+    <field name='RT_multimediaSessionAnnc' fqn='org.osgi.service.onem2m.dto.Constants.RT_multimediaSessionAnnc' qn='Constants.RT_multimediaSessionAnnc' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='int' qualifiedTypeName='int' dimension='' constantValue='10046'>
+   <lead>
+resource type for multimediaSessionAnnc
+   </lead>
+   <description>
+resource type for multimediaSessionAnnc
+   </description>
+
+     </field>
+  </class>
+  <class name='DasInfoDTO' fqn='org.osgi.service.onem2m.dto.DasInfoDTO' qn='DasInfoDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+DTO expresses DasInfo.
+   </lead>
+   <description>
+DTO expresses DasInfo. DAS is short for Dynamic Authorization Server.
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.45</a><a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L1135-1147">oneM2M
+      XSD dynAuthTokenReqInfo and dasInfo</a><NotThreadSafe></NotThreadSafe>
+    <method name='DasInfoDTO' fqn='org.osgi.service.onem2m.dto.DasInfoDTO.DasInfoDTO' qn='DasInfoDTO.DasInfoDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='uri' fqn='org.osgi.service.onem2m.dto.DasInfoDTO.uri' qn='DasInfoDTO.uri' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Dynamic Authorization Server URI
+   </lead>
+   <description>
+Dynamic Authorization Server URI
+   </description>
+
+     </field>
+    <field name='dasRequest' fqn='org.osgi.service.onem2m.dto.DasInfoDTO.dasRequest' qn='DasInfoDTO.dasRequest' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='GenericDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.GenericDTO' dimension=''>
+   <lead>
+Information to send to the Dynamic Authorization Server
+   </lead>
+   <description>
+Information to send to the Dynamic Authorization Server
+   </description>
+<a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L1149-1198">oneM2M
+      XSD dynAuthDasRequest</a>
+     </field>
+    <field name='securedDasRequest' fqn='org.osgi.service.onem2m.dto.DasInfoDTO.securedDasRequest' qn='DasInfoDTO.securedDasRequest' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Secured Information to send to the Dynamic Authorization Server.
+   </lead>
+   <description>
+Secured Information to send to the Dynamic Authorization Server. JWS or
+ JWE is assigned to this field.
+   </description>
+
+     </field>
+  </class>
+  <class name='FilterCriteriaDTO' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO' qn='FilterCriteriaDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+DTO expresses FilterCriteria.
+   </lead>
+   <description>
+DTO expresses FilterCriteria. This data structure is used for searching
+ resources.
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.8</a><a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oenM2M
+      TS-0004 7.3.3.17.17</a><NotThreadSafe></NotThreadSafe>
+    <method name='FilterCriteriaDTO' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.FilterCriteriaDTO' qn='FilterCriteriaDTO.FilterCriteriaDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='createdBefore' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.createdBefore' qn='FilterCriteriaDTO.createdBefore' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Created Before
+   </lead>
+   <description>
+Created Before
+   </description>
+
+     </field>
+    <field name='createdAfter' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.createdAfter' qn='FilterCriteriaDTO.createdAfter' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Created After
+   </lead>
+   <description>
+Created After
+   </description>
+
+     </field>
+    <field name='modifiedSince' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.modifiedSince' qn='FilterCriteriaDTO.modifiedSince' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Modified Since
+   </lead>
+   <description>
+Modified Since
+   </description>
+
+     </field>
+    <field name='unmodifiedSince' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.unmodifiedSince' qn='FilterCriteriaDTO.unmodifiedSince' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Unmodified Since
+   </lead>
+   <description>
+Unmodified Since
+   </description>
+
+     </field>
+    <field name='stateTagSmaller' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.stateTagSmaller' qn='FilterCriteriaDTO.stateTagSmaller' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+State Tag Smaller
+   </lead>
+   <description>
+State Tag Smaller
+   </description>
+
+     </field>
+    <field name='stateTagBigger' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.stateTagBigger' qn='FilterCriteriaDTO.stateTagBigger' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+State Tag Bigger
+   </lead>
+   <description>
+State Tag Bigger
+   </description>
+
+     </field>
+    <field name='expireBefore' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.expireBefore' qn='FilterCriteriaDTO.expireBefore' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Expire Before
+   </lead>
+   <description>
+Expire Before
+   </description>
+
+     </field>
+    <field name='expireAfter' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.expireAfter' qn='FilterCriteriaDTO.expireAfter' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Expire After
+   </lead>
+   <description>
+Expire After
+   </description>
+
+     </field>
+    <field name='labels' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.labels' qn='FilterCriteriaDTO.labels' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Labels
+   </lead>
+   <description>
+Labels
+   </description>
+
+     </field>
+    <field name='resourceType' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.resourceType' qn='FilterCriteriaDTO.resourceType' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;Integer&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Resource Type
+   </lead>
+   <description>
+Resource Type
+   </description>
+
+     </field>
+    <field name='sizeAbove' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.sizeAbove' qn='FilterCriteriaDTO.sizeAbove' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+Size Above
+   </lead>
+   <description>
+Size Above
+   </description>
+
+     </field>
+    <field name='sizeBelow' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.sizeBelow' qn='FilterCriteriaDTO.sizeBelow' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+Size Below
+   </lead>
+   <description>
+Size Below
+   </description>
+
+     </field>
+    <field name='contentType' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.contentType' qn='FilterCriteriaDTO.contentType' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Content Type
+   </lead>
+   <description>
+Content Type
+   </description>
+
+     </field>
+    <field name='attribute' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.attribute' qn='FilterCriteriaDTO.attribute' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;AttributeDTO&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Attribute
+   </lead>
+   <description>
+Attribute
+   </description>
+
+     </field>
+    <field name='filterUsage' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.filterUsage' qn='FilterCriteriaDTO.filterUsage' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='FilterUsage' qualifiedTypeName='org.osgi.service.onem2m.dto.FilterCriteriaDTO.FilterUsage' dimension=''>
+   <lead>
+Filter Usage
+   </lead>
+   <description>
+Filter Usage
+   </description>
+
+     </field>
+    <field name='limit' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.limit' qn='FilterCriteriaDTO.limit' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+Limit number of Answers
+   </lead>
+   <description>
+Limit number of Answers
+   </description>
+
+     </field>
+    <field name='semanticsFilter' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.semanticsFilter' qn='FilterCriteriaDTO.semanticsFilter' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Semantic Filter
+   </lead>
+   <description>
+Semantic Filter
+   </description>
+
+     </field>
+    <field name='filterOperation' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.filterOperation' qn='FilterCriteriaDTO.filterOperation' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='FilterOperation' qualifiedTypeName='org.osgi.service.onem2m.dto.FilterCriteriaDTO.FilterOperation' dimension=''>
+   <lead>
+Filter Operation
+   </lead>
+   <description>
+Filter Operation
+   </description>
+
+     </field>
+    <field name='contentFilterSyntax' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.contentFilterSyntax' qn='FilterCriteriaDTO.contentFilterSyntax' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+Content Filter Syntax
+   </lead>
+   <description>
+Content Filter Syntax
+   </description>
+
+     </field>
+    <field name='contentFilterQuery' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.contentFilterQuery' qn='FilterCriteriaDTO.contentFilterQuery' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Content Filter Query
+   </lead>
+   <description>
+Content Filter Query
+   </description>
+
+     </field>
+    <field name='level' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.level' qn='FilterCriteriaDTO.level' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+Level
+   </lead>
+   <description>
+Level
+   </description>
+
+     </field>
+    <field name='offset' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.offset' qn='FilterCriteriaDTO.offset' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+Offset
+   </lead>
+   <description>
+Offset
+   </description>
+
+     </field>
+    <field name='childLabels' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.childLabels' qn='FilterCriteriaDTO.childLabels' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Child Labels
+   </lead>
+   <description>
+Child Labels
+   </description>
+
+     </field>
+    <field name='parentLabels' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.parentLabels' qn='FilterCriteriaDTO.parentLabels' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Parent Labels
+   </lead>
+   <description>
+Parent Labels
+   </description>
+
+     </field>
+    <field name='labelsQuery' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.labelsQuery' qn='FilterCriteriaDTO.labelsQuery' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Label Query
+   </lead>
+   <description>
+Label Query
+   </description>
+
+     </field>
+    <field name='childResourceType' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.childResourceType' qn='FilterCriteriaDTO.childResourceType' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;Integer&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Child Resource Type
+   </lead>
+   <description>
+Child Resource Type
+   </description>
+
+     </field>
+    <field name='parentResourceType' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.parentResourceType' qn='FilterCriteriaDTO.parentResourceType' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;Integer&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Parent Resource Type
+   </lead>
+   <description>
+Parent Resource Type
+   </description>
+
+     </field>
+    <field name='childAttribute' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.childAttribute' qn='FilterCriteriaDTO.childAttribute' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;AttributeDTO&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Child Attribute
+   </lead>
+   <description>
+Child Attribute
+   </description>
+
+     </field>
+    <field name='parentAttribute' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.parentAttribute' qn='FilterCriteriaDTO.parentAttribute' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;AttributeDTO&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Parent Attribute
+   </lead>
+   <description>
+Parent Attribute
+   </description>
+
+     </field>
+    <field name='applyRelativePath' fqn='org.osgi.service.onem2m.dto.FilterCriteriaDTO.applyRelativePath' qn='FilterCriteriaDTO.applyRelativePath' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Apply Relative Path
+   </lead>
+   <description>
+Apply Relative Path
+   </description>
+
+     </field>
+  </class>
+  <class name='GenericDTO' fqn='org.osgi.service.onem2m.dto.GenericDTO' qn='GenericDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+GenericDTO expresses miscellaneous data structures of oneM2M.
+   </lead>
+   <description>
+GenericDTO expresses miscellaneous data structures of oneM2M.
+   </description>
+<NotThreadSafe></NotThreadSafe>
+    <method name='GenericDTO' fqn='org.osgi.service.onem2m.dto.GenericDTO.GenericDTO' qn='GenericDTO.GenericDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='element' fqn='org.osgi.service.onem2m.dto.GenericDTO.element' qn='GenericDTO.element' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Map&lt;String, Object&gt;' qualifiedTypeName='java.util.Map' dimension=''>
+   <lead>
+Substructure of DTO.
+   </lead>
+   <description>
+Substructure of DTO. Type of the value part should be one of types
+ allowed as OSGi DTO.
+   </description>
+
+     </field>
+  </class>
+  <class name='IPEDiscoveryRequestDTO' fqn='org.osgi.service.onem2m.dto.IPEDiscoveryRequestDTO' qn='IPEDiscoveryRequestDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+IPEDiscoveryRequestDTO is an element of NotificationEventDTO
+   </lead>
+   <description>
+IPEDiscoveryRequestDTO is an element of NotificationEventDTO
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.13</a><NotThreadSafe></NotThreadSafe>
+    <method name='IPEDiscoveryRequestDTO' fqn='org.osgi.service.onem2m.dto.IPEDiscoveryRequestDTO.IPEDiscoveryRequestDTO' qn='IPEDiscoveryRequestDTO.IPEDiscoveryRequestDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='originator' fqn='org.osgi.service.onem2m.dto.IPEDiscoveryRequestDTO.originator' qn='IPEDiscoveryRequestDTO.originator' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+originator
+   </lead>
+   <description>
+originator
+   </description>
+
+     </field>
+    <field name='filterCriteria' fqn='org.osgi.service.onem2m.dto.IPEDiscoveryRequestDTO.filterCriteria' qn='IPEDiscoveryRequestDTO.filterCriteria' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='FilterCriteriaDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.FilterCriteriaDTO' dimension=''>
+   <lead>
+FilterCriteria
+   </lead>
+   <description>
+FilterCriteria
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.8</a>
+     </field>
+  </class>
+  <class name='LocalTokenIdAssignmentDTO' fqn='org.osgi.service.onem2m.dto.LocalTokenIdAssignmentDTO' qn='LocalTokenIdAssignmentDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+DTO expresses LocalTokenIdAssignment.
+   </lead>
+   <description>
+DTO expresses LocalTokenIdAssignment.
+   </description>
+<a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L1112-1123">oneM2M
+      XSD dynAuthLocalTokenIdAssignments and localTokenIdAssignment</a><NotThreadSafe></NotThreadSafe>
+    <method name='LocalTokenIdAssignmentDTO' fqn='org.osgi.service.onem2m.dto.LocalTokenIdAssignmentDTO.LocalTokenIdAssignmentDTO' qn='LocalTokenIdAssignmentDTO.LocalTokenIdAssignmentDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='localTokenID' fqn='org.osgi.service.onem2m.dto.LocalTokenIdAssignmentDTO.localTokenID' qn='LocalTokenIdAssignmentDTO.localTokenID' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+local token ID
+   </lead>
+   <description>
+local token ID
+   </description>
+
+     </field>
+    <field name='tokenID' fqn='org.osgi.service.onem2m.dto.LocalTokenIdAssignmentDTO.tokenID' qn='LocalTokenIdAssignmentDTO.tokenID' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+token ID
+   </lead>
+   <description>
+token ID
+   </description>
+
+     </field>
+  </class>
+  <class name='NotificationDTO' fqn='org.osgi.service.onem2m.dto.NotificationDTO' qn='NotificationDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+DTO expresses Notification.
+   </lead>
+   <description>
+DTO expresses Notification.
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.13</a><NotThreadSafe></NotThreadSafe>
+    <method name='NotificationDTO' fqn='org.osgi.service.onem2m.dto.NotificationDTO.NotificationDTO' qn='NotificationDTO.NotificationDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='notificationEvent' fqn='org.osgi.service.onem2m.dto.NotificationDTO.notificationEvent' qn='NotificationDTO.notificationEvent' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='NotificationEventDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.NotificationEventDTO' dimension=''>
+   <lead>
+Notification Event
+   </lead>
+   <description>
+Notification Event
+   </description>
+
+     </field>
+    <field name='verificationRequest' fqn='org.osgi.service.onem2m.dto.NotificationDTO.verificationRequest' qn='NotificationDTO.verificationRequest' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Boolean' qualifiedTypeName='java.lang.Boolean' dimension=''>
+   <lead>
+Flag showing verification request.
+   </lead>
+   <description>
+Flag showing verification request. This field is optional.
+   </description>
+
+     </field>
+    <field name='subscriptionDeletion' fqn='org.osgi.service.onem2m.dto.NotificationDTO.subscriptionDeletion' qn='NotificationDTO.subscriptionDeletion' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Boolean' qualifiedTypeName='java.lang.Boolean' dimension=''>
+   <lead>
+Flag showing subscription deletion This field is optional.
+   </lead>
+   <description>
+Flag showing subscription deletion This field is optional.
+   </description>
+
+     </field>
+    <field name='subscriptionReference' fqn='org.osgi.service.onem2m.dto.NotificationDTO.subscriptionReference' qn='NotificationDTO.subscriptionReference' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+URI referring subscription resource.
+   </lead>
+   <description>
+URI referring subscription resource.
+   </description>
+
+     </field>
+    <field name='creator' fqn='org.osgi.service.onem2m.dto.NotificationDTO.creator' qn='NotificationDTO.creator' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+creator
+   </lead>
+   <description>
+creator
+   </description>
+
+     </field>
+    <field name='notificationForwardingURI' fqn='org.osgi.service.onem2m.dto.NotificationDTO.notificationForwardingURI' qn='NotificationDTO.notificationForwardingURI' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+notification forwarding URI
+   </lead>
+   <description>
+notification forwarding URI
+   </description>
+
+     </field>
+    <field name='notificationTarget' fqn='org.osgi.service.onem2m.dto.NotificationDTO.notificationTarget' qn='NotificationDTO.notificationTarget' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+ID for notification target
+   </lead>
+   <description>
+ID for notification target
+   </description>
+
+     </field>
+    <field name='ipeDiscoveryRequest' fqn='org.osgi.service.onem2m.dto.NotificationDTO.ipeDiscoveryRequest' qn='NotificationDTO.ipeDiscoveryRequest' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='IPEDiscoveryRequestDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.IPEDiscoveryRequestDTO' dimension=''>
+   <lead>
+IPE Discovery Request.
+   </lead>
+   <description>
+IPE Discovery Request.
+   </description>
+
+     </field>
+    <field name='aeRegistrationPointChange' fqn='org.osgi.service.onem2m.dto.NotificationDTO.aeRegistrationPointChange' qn='NotificationDTO.aeRegistrationPointChange' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Boolean' qualifiedTypeName='java.lang.Boolean' dimension=''>
+   <lead>
+AE Registration Point Change
+   </lead>
+   <description>
+AE Registration Point Change
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.16</a>
+     </field>
+    <field name='aeReferenceIDChange' fqn='org.osgi.service.onem2m.dto.NotificationDTO.aeReferenceIDChange' qn='NotificationDTO.aeReferenceIDChange' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Boolean' qualifiedTypeName='java.lang.Boolean' dimension=''>
+   <lead>
+aeReferenceIDChange element
+   </lead>
+   <description>
+aeReferenceIDChange element
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.17</a>
+     </field>
+    <field name='trackingID1' fqn='org.osgi.service.onem2m.dto.NotificationDTO.trackingID1' qn='NotificationDTO.trackingID1' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+tracking ID 1
+   </lead>
+   <description>
+tracking ID 1
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.16</a><a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.17</a>
+     </field>
+    <field name='trackingID2' fqn='org.osgi.service.onem2m.dto.NotificationDTO.trackingID2' qn='NotificationDTO.trackingID2' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+tracking ID 1
+   </lead>
+   <description>
+tracking ID 1
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.16</a><a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.17</a>
+     </field>
+  </class>
+  <class name='NotificationEventDTO' fqn='org.osgi.service.onem2m.dto.NotificationEventDTO' qn='NotificationEventDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' kind='CLASS'>
+   <lead>
+DTO expresses NotificationEventDTO
+   </lead>
+   <description>
+DTO expresses NotificationEventDTO
+ <p>
+ This data structure is held in NotificationDTO.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.13</a><NotThreadSafe></NotThreadSafe>
+    <method name='NotificationEventDTO' fqn='org.osgi.service.onem2m.dto.NotificationEventDTO.NotificationEventDTO' qn='NotificationEventDTO.NotificationEventDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='representation' fqn='org.osgi.service.onem2m.dto.NotificationEventDTO.representation' qn='NotificationEventDTO.representation' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Object' qualifiedTypeName='java.lang.Object' dimension=''>
+   <lead>
+m2m:representation
+   </lead>
+   <description>
+m2m:representation
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.62</a>
+     </field>
+    <field name='operationMonitor' fqn='org.osgi.service.onem2m.dto.NotificationEventDTO.operationMonitor' qn='NotificationEventDTO.operationMonitor' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Map&lt;String, Object&gt;' qualifiedTypeName='java.util.Map' dimension=''>
+   <lead>
+operationMonitor
+   </lead>
+   <description>
+operationMonitor
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.57</a>
+     </field>
+    <field name='notificationEventType' fqn='org.osgi.service.onem2m.dto.NotificationEventDTO.notificationEventType' qn='NotificationEventDTO.notificationEventType' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='NotificationEventType' qualifiedTypeName='org.osgi.service.onem2m.dto.NotificationEventDTO.NotificationEventType' dimension=''>
+   <lead>
+notificationEventType
+   </lead>
+   <description>
+notificationEventType
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.19</a>
+     </field>
+  </class>
+  <class name='PrimitiveContentDTO' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO' qn='PrimitiveContentDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+DTO expresses Primitive Content.
+   </lead>
+   <description>
+DTO expresses Primitive Content.
+ <p>
+ This Data structure is used as union. Only one field MUST have a value, the
+ others MUST be null.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.5</a><a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.2.1</a><a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L596-602">oneM2M
+      XSD primitiveContent</a><NotThreadSafe></NotThreadSafe>
+    <method name='PrimitiveContentDTO' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.PrimitiveContentDTO' qn='PrimitiveContentDTO.PrimitiveContentDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='resource' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.resource' qn='PrimitiveContentDTO.resource' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='ResourceDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.ResourceDTO' dimension=''>
+   <lead>
+Resource
+   </lead>
+   <description>
+Resource
+   </description>
+
+     </field>
+    <field name='resourceWrapper' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.resourceWrapper' qn='PrimitiveContentDTO.resourceWrapper' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='ResourceWrapperDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.ResourceWrapperDTO' dimension=''>
+   <lead>
+Resource Wrapper
+   </lead>
+   <description>
+Resource Wrapper
+   </description>
+
+     </field>
+    <field name='aggregatedNotification' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.aggregatedNotification' qn='PrimitiveContentDTO.aggregatedNotification' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;NotificationDTO&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Aggregated Notification
+   </lead>
+   <description>
+Aggregated Notification
+   </description>
+
+     </field>
+    <field name='securityInfo' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.securityInfo' qn='PrimitiveContentDTO.securityInfo' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='SecurityInfoDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.SecurityInfoDTO' dimension=''>
+   <lead>
+Security Info
+   </lead>
+   <description>
+Security Info
+   </description>
+
+     </field>
+    <field name='responsePrimitive' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.responsePrimitive' qn='PrimitiveContentDTO.responsePrimitive' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='ResponsePrimitiveDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO' dimension=''>
+   <lead>
+Response Primitive
+   </lead>
+   <description>
+Response Primitive
+   </description>
+
+     </field>
+    <field name='debugInfo' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.debugInfo' qn='PrimitiveContentDTO.debugInfo' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Debug Info
+   </lead>
+   <description>
+Debug Info
+   </description>
+
+     </field>
+    <field name='listOfURIs' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.listOfURIs' qn='PrimitiveContentDTO.listOfURIs' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+List Of URIs
+   </lead>
+   <description>
+List Of URIs
+   </description>
+
+     </field>
+    <field name='uri' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.uri' qn='PrimitiveContentDTO.uri' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+URI
+   </lead>
+   <description>
+URI
+   </description>
+
+     </field>
+    <field name='aggregatedResponse' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.aggregatedResponse' qn='PrimitiveContentDTO.aggregatedResponse' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;ResponsePrimitiveDTO&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Aggregated Response
+   </lead>
+   <description>
+Aggregated Response
+   </description>
+
+     </field>
+    <field name='childResourceRefList' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.childResourceRefList' qn='PrimitiveContentDTO.childResourceRefList' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;ChildResourceRefDTO&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Child Resource RefList
+   </lead>
+   <description>
+Child Resource RefList
+   </description>
+
+     </field>
+    <field name='notification' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.notification' qn='PrimitiveContentDTO.notification' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='NotificationDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.NotificationDTO' dimension=''>
+   <lead>
+Notification
+   </lead>
+   <description>
+Notification
+   </description>
+
+     </field>
+    <field name='attributeList' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.attributeList' qn='PrimitiveContentDTO.attributeList' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Attribute List
+   </lead>
+   <description>
+Attribute List
+   </description>
+
+     </field>
+    <field name='requestPrimitive' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.requestPrimitive' qn='PrimitiveContentDTO.requestPrimitive' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='RequestPrimitiveDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.RequestPrimitiveDTO' dimension=''>
+   <lead>
+Request Primitive
+   </lead>
+   <description>
+Request Primitive
+   </description>
+
+     </field>
+    <field name='queryResult' fqn='org.osgi.service.onem2m.dto.PrimitiveContentDTO.queryResult' qn='PrimitiveContentDTO.queryResult' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Query Result
+   </lead>
+   <description>
+Query Result
+   </description>
+
+     </field>
+  </class>
+  <class name='ReleaseVersion' fqn='org.osgi.service.onem2m.dto.ReleaseVersion' qn='ReleaseVersion' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public final' superclass='Enum&lt;ReleaseVersion&gt;' kind='ENUM'>
+   <lead>
+enum expresses oneM2M specification version.
+   </lead>
+   <description>
+enum expresses oneM2M specification version.
+ <p>
+ This information is introduced after Release 2.0 and oneM2M uses only R2A,
+ R3_0 (as 2a and 3).</p>
+   </description>
+<a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L450-455">oneM2M
+      XSD releaseVersion</a>
+    <field name='R1_0' fqn='org.osgi.service.onem2m.dto.ReleaseVersion.R1_0' qn='ReleaseVersion.R1_0' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='ReleaseVersion' qualifiedTypeName='org.osgi.service.onem2m.dto.ReleaseVersion' dimension=''>
+   <lead>
+Release 1
+   </lead>
+   <description>
+Release 1
+   </description>
+
+     </field>
+    <field name='R1_1' fqn='org.osgi.service.onem2m.dto.ReleaseVersion.R1_1' qn='ReleaseVersion.R1_1' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='ReleaseVersion' qualifiedTypeName='org.osgi.service.onem2m.dto.ReleaseVersion' dimension=''>
+   <lead>
+Release 1.1
+   </lead>
+   <description>
+Release 1.1
+   </description>
+
+     </field>
+    <field name='R2_0' fqn='org.osgi.service.onem2m.dto.ReleaseVersion.R2_0' qn='ReleaseVersion.R2_0' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='ReleaseVersion' qualifiedTypeName='org.osgi.service.onem2m.dto.ReleaseVersion' dimension=''>
+   <lead>
+Release 2
+   </lead>
+   <description>
+Release 2
+   </description>
+
+     </field>
+    <field name='R2A' fqn='org.osgi.service.onem2m.dto.ReleaseVersion.R2A' qn='ReleaseVersion.R2A' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='ReleaseVersion' qualifiedTypeName='org.osgi.service.onem2m.dto.ReleaseVersion' dimension=''>
+   <lead>
+Release 2A
+   </lead>
+   <description>
+Release 2A
+   </description>
+
+     </field>
+    <field name='R3_0' fqn='org.osgi.service.onem2m.dto.ReleaseVersion.R3_0' qn='ReleaseVersion.R3_0' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='ReleaseVersion' qualifiedTypeName='org.osgi.service.onem2m.dto.ReleaseVersion' dimension=''>
+   <lead>
+Release 3
+   </lead>
+   <description>
+Release 3
+   </description>
+
+     </field>
+    <field name='R4_0' fqn='org.osgi.service.onem2m.dto.ReleaseVersion.R4_0' qn='ReleaseVersion.R4_0' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='ReleaseVersion' qualifiedTypeName='org.osgi.service.onem2m.dto.ReleaseVersion' dimension=''>
+   <lead>
+Release 4 (reserved for future)
+   </lead>
+   <description>
+Release 4 (reserved for future)
+   </description>
+
+     </field>
+    <field name='R5_0' fqn='org.osgi.service.onem2m.dto.ReleaseVersion.R5_0' qn='ReleaseVersion.R5_0' package='org.osgi.service.onem2m.dto' modifiers='public static final' typeName='ReleaseVersion' qualifiedTypeName='org.osgi.service.onem2m.dto.ReleaseVersion' dimension=''>
+   <lead>
+Release 5 (reserved for future)
+   </lead>
+   <description>
+Release 5 (reserved for future)
+   </description>
+
+     </field>
+    <method name='values' fqn='org.osgi.service.onem2m.dto.ReleaseVersion.values' qn='ReleaseVersion.values()' package='org.osgi.service.onem2m.dto' modifiers='public static' typeName='ReleaseVersion[]' qualifiedTypeName='org.osgi.service.onem2m.dto.ReleaseVersion[]' typeArgs='' dimension='[]' signature='()' flatSignature='()'>
+   <lead/>
+   <description/>
+     </method>
+    <method name='valueOf' fqn='org.osgi.service.onem2m.dto.ReleaseVersion.valueOf' qn='ReleaseVersion.valueOf(String)' package='org.osgi.service.onem2m.dto' modifiers='public static' typeName='ReleaseVersion' qualifiedTypeName='org.osgi.service.onem2m.dto.ReleaseVersion' typeArgs='' dimension='' signature='(java.lang.String)' flatSignature='(String)'>
+   <lead/>
+   <description/>
+    <parameter name='name' dimension='' typeName='String' fqn='java.lang.String' varargs='false'/>
+     </method>
+  </class>
+  <class name='RequestPrimitiveDTO' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO' qn='RequestPrimitiveDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+DTO expresses Request Primitive.
+   </lead>
+   <description>
+DTO expresses Request Primitive.
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.4.1</a><a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-requestPrimitive-v3_11_0.xsd">oneM2M
+      XSD requestPrimitive</a><NotThreadSafe></NotThreadSafe>
+    <method name='RequestPrimitiveDTO' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.RequestPrimitiveDTO' qn='RequestPrimitiveDTO.RequestPrimitiveDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='operation' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.operation' qn='RequestPrimitiveDTO.operation' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Operation' qualifiedTypeName='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.Operation' dimension=''>
+   <lead>
+Operation This field is mandatory.
+   </lead>
+   <description>
+Operation This field is mandatory.
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.5</a>
+     </field>
+    <field name='to' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.to' qn='RequestPrimitiveDTO.to' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+To Parameter
+   </lead>
+   <description>
+To Parameter
+   </description>
+
+     </field>
+    <field name='from' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.from' qn='RequestPrimitiveDTO.from' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+From Parameter.
+   </lead>
+   <description>
+From Parameter.
+ <p>
+ Originator of the request is stored.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.5</a>
+     </field>
+    <field name='requestIdentifier' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.requestIdentifier' qn='RequestPrimitiveDTO.requestIdentifier' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Request Identifier
+   </lead>
+   <description>
+Request Identifier
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.3</a>
+     </field>
+    <field name='resourceType' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.resourceType' qn='RequestPrimitiveDTO.resourceType' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+Resource Type
+   </lead>
+   <description>
+Resource Type
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.1</a>
+     </field>
+    <field name='content' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.content' qn='RequestPrimitiveDTO.content' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='PrimitiveContentDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.PrimitiveContentDTO' dimension=''>
+   <lead>
+Primitive Content
+   </lead>
+   <description>
+Primitive Content
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.5</a><a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.2.1.1</a>
+     </field>
+    <field name='roleIDs' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.roleIDs' qn='RequestPrimitiveDTO.roleIDs' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Role IDs
+   </lead>
+   <description>
+Role IDs
+   </description>
+
+     </field>
+    <field name='originatingTimestamp' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.originatingTimestamp' qn='RequestPrimitiveDTO.originatingTimestamp' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Originating Timestamp
+   </lead>
+   <description>
+Originating Timestamp
+   </description>
+
+     </field>
+    <field name='requestExpirationTimestamp' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.requestExpirationTimestamp' qn='RequestPrimitiveDTO.requestExpirationTimestamp' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Request Expiration Timestamp
+   </lead>
+   <description>
+Request Expiration Timestamp
+ <p>
+ * This parameter is related to CMDH(Communication Management and Delivery
+ Handling) policy.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 D.12</a>
+     </field>
+    <field name='resultExpirationTimestamp' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.resultExpirationTimestamp' qn='RequestPrimitiveDTO.resultExpirationTimestamp' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Result Expiration Timestamp
+   </lead>
+   <description>
+Result Expiration Timestamp
+ <p>
+ This parameter is related to CMDH(Communication Management and Delivery
+ Handling) policy.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 D.12</a>
+     </field>
+    <field name='operationExecutionTime' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.operationExecutionTime' qn='RequestPrimitiveDTO.operationExecutionTime' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Operation Execution Time
+   </lead>
+   <description>
+Operation Execution Time
+   </description>
+
+     </field>
+    <field name='responseType' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.responseType' qn='RequestPrimitiveDTO.responseType' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='ResponseTypeInfoDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.ResponseTypeInfoDTO' dimension=''>
+   <lead>
+Response Type Info
+   </lead>
+   <description>
+Response Type Info
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.30</a>
+     </field>
+    <field name='resultPersistence' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.resultPersistence' qn='RequestPrimitiveDTO.resultPersistence' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Result Persistence
+   </lead>
+   <description>
+Result Persistence
+ <p>
+ This parameter is related to CMDH(Communication Management and Delivery
+ Handling) policy.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 D.12</a>
+     </field>
+    <field name='resultContent' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.resultContent' qn='RequestPrimitiveDTO.resultContent' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='ResultContent' qualifiedTypeName='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.ResultContent' dimension=''>
+   <lead>
+Result Content
+   </lead>
+   <description>
+Result Content
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.7</a>
+     </field>
+    <field name='eventCategory' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.eventCategory' qn='RequestPrimitiveDTO.eventCategory' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+Event Category
+   </lead>
+   <description>
+Event Category
+ <p>
+ allowed values are 2(Immediate), 3(BestEffort), 4(Latest), and 100-999 as
+ user defined range.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.3</a><a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L326">oneM2M
+      XSD eventCat</a><a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-enumerationTypes-v3_11_0.xsd#L208-221">oneM2M
+      XSD stdEventCats</a>
+     </field>
+    <field name='deliveryAggregation' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.deliveryAggregation' qn='RequestPrimitiveDTO.deliveryAggregation' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Boolean' qualifiedTypeName='java.lang.Boolean' dimension=''>
+   <lead>
+Delivery Aggregation
+   </lead>
+   <description>
+Delivery Aggregation
+ <p>
+ This parameter is related to CMDH(Communication Management and Delivery
+ Handling) policy.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 D.12</a>
+     </field>
+    <field name='groupRequestIdentifier' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.groupRequestIdentifier' qn='RequestPrimitiveDTO.groupRequestIdentifier' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Group Request Identifier TODO: search doc.
+   </lead>
+   <description>
+Group Request Identifier TODO: search doc.
+   </description>
+
+     </field>
+    <field name='filterCriteria' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.filterCriteria' qn='RequestPrimitiveDTO.filterCriteria' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='FilterCriteriaDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.FilterCriteriaDTO' dimension=''>
+   <lead>
+Filter Criteria
+   </lead>
+   <description>
+Filter Criteria
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.8</a>
+     </field>
+    <field name='desiredIdentifierResultType' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.desiredIdentifierResultType' qn='RequestPrimitiveDTO.desiredIdentifierResultType' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='DesiredIdentifierResultType' qualifiedTypeName='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.DesiredIdentifierResultType' dimension=''>
+   <lead>
+Desired Identifier Result Type
+   </lead>
+   <description>
+Desired Identifier Result Type
+ <p>
+ This parameter specifies identifier type in response, such as structured
+ or unstructured. This parameter used to be Discovery Result Type in
+ previous oneM2M release.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.8</a>
+     </field>
+    <field name='tokens' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.tokens' qn='RequestPrimitiveDTO.tokens' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Tokens
+   </lead>
+   <description>
+Tokens
+ <p>
+ Each token is in m2m:dynAuthJWT</p>
+   </description>
+<a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L417-426">oneM2M
+      XSD signatureList</a>
+     </field>
+    <field name='tokenIDs' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.tokenIDs' qn='RequestPrimitiveDTO.tokenIDs' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Token Identifiers
+   </lead>
+   <description>
+Token Identifiers
+ <p>
+ In oneM2M this parameter is expressed as list of m2m:tokenID.</p>
+   </description>
+<a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L66-70">oneM2M
+      XSD signatureList</a>
+     </field>
+    <field name='localTokenIDs' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.localTokenIDs' qn='RequestPrimitiveDTO.localTokenIDs' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Local Token Identifiers
+   </lead>
+   <description>
+Local Token Identifiers
+ <p>
+ In oneM2M this parameter is expressed as list of xs:NCName.</p>
+   </description>
+
+     </field>
+    <field name='tokenRequestIndicator' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.tokenRequestIndicator' qn='RequestPrimitiveDTO.tokenRequestIndicator' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Boolean' qualifiedTypeName='java.lang.Boolean' dimension=''>
+   <lead>
+Token Request Indicator
+   </lead>
+   <description>
+Token Request Indicator
+   </description>
+
+     </field>
+    <field name='groupRequestTargetMembers' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.groupRequestTargetMembers' qn='RequestPrimitiveDTO.groupRequestTargetMembers' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Group Request Target Members
+   </lead>
+   <description>
+Group Request Target Members
+   </description>
+
+     </field>
+    <field name='authorizationSignatureIndicator' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.authorizationSignatureIndicator' qn='RequestPrimitiveDTO.authorizationSignatureIndicator' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Boolean' qualifiedTypeName='java.lang.Boolean' dimension=''>
+   <lead>
+Authorization Signature Indicator
+   </lead>
+   <description>
+Authorization Signature Indicator
+   </description>
+
+     </field>
+    <field name='authorizationSignatures' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.authorizationSignatures' qn='RequestPrimitiveDTO.authorizationSignatures' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Authorization Signatures
+   </lead>
+   <description>
+Authorization Signatures
+ <p>
+ In oneM2M this parameter is expressed in m2m:signatureList.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.8</a><a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L129-137">oneM2M
+      XSD signatureList</a>
+     </field>
+    <field name='authorizationRelationshipIndicator' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.authorizationRelationshipIndicator' qn='RequestPrimitiveDTO.authorizationRelationshipIndicator' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Boolean' qualifiedTypeName='java.lang.Boolean' dimension=''>
+   <lead>
+Authorization Relationship Indicator
+   </lead>
+   <description>
+Authorization Relationship Indicator
+   </description>
+
+     </field>
+    <field name='semanticQueryIndicator' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.semanticQueryIndicator' qn='RequestPrimitiveDTO.semanticQueryIndicator' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Boolean' qualifiedTypeName='java.lang.Boolean' dimension=''>
+   <lead>
+Semantic Query Indicator
+   </lead>
+   <description>
+Semantic Query Indicator
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.3.3.19</a>
+     </field>
+    <field name='releaseVersionIndicator' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.releaseVersionIndicator' qn='RequestPrimitiveDTO.releaseVersionIndicator' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='ReleaseVersion' qualifiedTypeName='org.osgi.service.onem2m.dto.ReleaseVersion' dimension=''>
+   <lead>
+Release Version
+   </lead>
+   <description>
+Release Version
+   </description>
+
+     </field>
+    <field name='vendorInformation' fqn='org.osgi.service.onem2m.dto.RequestPrimitiveDTO.vendorInformation' qn='RequestPrimitiveDTO.vendorInformation' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Vendor Information
+   </lead>
+   <description>
+Vendor Information
+ <p>
+ Used for vendor specific information. No procedure is defined for the
+ parameter.</p>
+   </description>
+
+     </field>
+  </class>
+  <class name='ResourceDTO' fqn='org.osgi.service.onem2m.dto.ResourceDTO' qn='ResourceDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+DTO expresses Resource.
+   </lead>
+   <description>
+DTO expresses Resource.
+ <p>
+ Universal attributes are expressed in field of the class. Common attributes
+ and other attributes are stored in attribute field.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</a><NotThreadSafe></NotThreadSafe>
+    <method name='ResourceDTO' fqn='org.osgi.service.onem2m.dto.ResourceDTO.ResourceDTO' qn='ResourceDTO.ResourceDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='resourceType' fqn='org.osgi.service.onem2m.dto.ResourceDTO.resourceType' qn='ResourceDTO.resourceType' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+Resource Type
+   </lead>
+   <description>
+Resource Type
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</a><a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oenM2M
+      TS-0004 6.3.4.2.1</a>
+     </field>
+    <field name='resourceID' fqn='org.osgi.service.onem2m.dto.ResourceDTO.resourceID' qn='ResourceDTO.resourceID' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Resource ID
+   </lead>
+   <description>
+Resource ID
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</a>
+     </field>
+    <field name='parentID' fqn='org.osgi.service.onem2m.dto.ResourceDTO.parentID' qn='ResourceDTO.parentID' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Parent ID Resource ID of parent resource.
+   </lead>
+   <description>
+Parent ID Resource ID of parent resource.
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</a>
+     </field>
+    <field name='creationTime' fqn='org.osgi.service.onem2m.dto.ResourceDTO.creationTime' qn='ResourceDTO.creationTime' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Creation time
+   </lead>
+   <description>
+Creation time
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</a>
+     </field>
+    <field name='lastModifiedTime' fqn='org.osgi.service.onem2m.dto.ResourceDTO.lastModifiedTime' qn='ResourceDTO.lastModifiedTime' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+last modified time
+   </lead>
+   <description>
+last modified time
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</a>
+     </field>
+    <field name='resourceName' fqn='org.osgi.service.onem2m.dto.ResourceDTO.resourceName' qn='ResourceDTO.resourceName' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Resource name
+   </lead>
+   <description>
+Resource name
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</a>
+     </field>
+    <field name='attribute' fqn='org.osgi.service.onem2m.dto.ResourceDTO.attribute' qn='ResourceDTO.attribute' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Map&lt;String, Object&gt;' qualifiedTypeName='java.util.Map' dimension=''>
+   <lead>
+Non Universal Attribute.
+   </lead>
+   <description>
+Non Universal Attribute. Value Part must be the types that are allowed
+ for OSGi DTO. In case of value part can be expressed DTO in this package,
+ the DTO must be used. In case of value part have sub-elements, GenericDTO
+ must be used.
+   </description>
+
+     </field>
+  </class>
+  <class name='ResourceWrapperDTO' fqn='org.osgi.service.onem2m.dto.ResourceWrapperDTO' qn='ResourceWrapperDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+DTO expresses ResourceWrapper.
+   </lead>
+   <description>
+DTO expresses ResourceWrapper.
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.25</a><NotThreadSafe></NotThreadSafe>
+    <method name='ResourceWrapperDTO' fqn='org.osgi.service.onem2m.dto.ResourceWrapperDTO.ResourceWrapperDTO' qn='ResourceWrapperDTO.ResourceWrapperDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='uri' fqn='org.osgi.service.onem2m.dto.ResourceWrapperDTO.uri' qn='ResourceWrapperDTO.uri' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Hierarchical URI of the resource
+   </lead>
+   <description>
+Hierarchical URI of the resource
+   </description>
+
+     </field>
+    <field name='resource' fqn='org.osgi.service.onem2m.dto.ResourceWrapperDTO.resource' qn='ResourceWrapperDTO.resource' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='ResourceDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.ResourceDTO' dimension=''>
+   <lead>
+Resource
+   </lead>
+   <description>
+Resource
+   </description>
+
+     </field>
+  </class>
+  <class name='ResponsePrimitiveDTO' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO' qn='ResponsePrimitiveDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+DTO expresses Response Primitive.
+   </lead>
+   <description>
+DTO expresses Response Primitive.
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.4.2</a><a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-responsePrimitive-v3_11_0.xsd">oneM2M
+      XSD responsePrimitive</a><NotThreadSafe></NotThreadSafe>
+    <method name='ResponsePrimitiveDTO' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.ResponsePrimitiveDTO' qn='ResponsePrimitiveDTO.ResponsePrimitiveDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='responseStatusCode' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.responseStatusCode' qn='ResponsePrimitiveDTO.responseStatusCode' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+Response Status Code
+   </lead>
+   <description>
+Response Status Code
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.9</a>
+     </field>
+    <field name='requestIdentifier' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.requestIdentifier' qn='ResponsePrimitiveDTO.requestIdentifier' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Request Identifier
+   </lead>
+   <description>
+Request Identifier
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.3</a>
+     </field>
+    <field name='content' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.content' qn='ResponsePrimitiveDTO.content' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='PrimitiveContentDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.PrimitiveContentDTO' dimension=''>
+   <lead>
+Primitive Content
+   </lead>
+   <description>
+Primitive Content
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.5</a><a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.2.1.2</a>
+     </field>
+    <field name='to' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.to' qn='ResponsePrimitiveDTO.to' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+To Parameter
+   </lead>
+   <description>
+To Parameter
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.3</a>
+     </field>
+    <field name='from' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.from' qn='ResponsePrimitiveDTO.from' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+From Parameter
+   </lead>
+   <description>
+From Parameter
+   </description>
+
+     </field>
+    <field name='originatingTimestamp' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.originatingTimestamp' qn='ResponsePrimitiveDTO.originatingTimestamp' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Originating Timestamp To Parameter
+   </lead>
+   <description>
+Originating Timestamp To Parameter
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 Table 6.3.3-1</a>
+     </field>
+    <field name='resultExpirationTimestamp' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.resultExpirationTimestamp' qn='ResponsePrimitiveDTO.resultExpirationTimestamp' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+ResultExpiration Timestamp
+   </lead>
+   <description>
+ResultExpiration Timestamp
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 Table 6.3.3-1</a>
+     </field>
+    <field name='eventCategory' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.eventCategory' qn='ResponsePrimitiveDTO.eventCategory' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+Event Category
+   </lead>
+   <description>
+Event Category
+ <p>
+ allowed values are 2(Immediate), 3(BestEffort), 4(Latest), and 100-999 as
+ user defined range.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.3</a><a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L326">oneM2M
+      XSD eventCat</a><a href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-enumerationTypes-v3_11_0.xsd#L208-221">oneM2M
+      XSD stdEventCats</a>
+     </field>
+    <field name='contentStatus' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.contentStatus' qn='ResponsePrimitiveDTO.contentStatus' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='ContentStatus' qualifiedTypeName='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.ContentStatus' dimension=''>
+   <lead>
+Content Status
+   </lead>
+   <description>
+Content Status
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.44</a>
+     </field>
+    <field name='contentOffset' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.contentOffset' qn='ResponsePrimitiveDTO.contentOffset' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Integer' qualifiedTypeName='java.lang.Integer' dimension=''>
+   <lead>
+Content Offset
+   </lead>
+   <description>
+Content Offset
+   </description>
+
+     </field>
+    <field name='assignedTokenIdentifiers' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.assignedTokenIdentifiers' qn='ResponsePrimitiveDTO.assignedTokenIdentifiers' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;LocalTokenIdAssignmentDTO&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Assigned Token Identifiers
+   </lead>
+   <description>
+Assigned Token Identifiers
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.43</a>
+     </field>
+    <field name='tokenReqInfo' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.tokenReqInfo' qn='ResponsePrimitiveDTO.tokenReqInfo' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;DasInfoDTO&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Token Request Info
+   </lead>
+   <description>
+Token Request Info
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.45</a>
+     </field>
+    <field name='AuthSignatureReqInfo' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.AuthSignatureReqInfo' qn='ResponsePrimitiveDTO.AuthSignatureReqInfo' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='Boolean' qualifiedTypeName='java.lang.Boolean' dimension=''>
+   <lead>
+AuthSignatureReqInfo
+   </lead>
+   <description>
+AuthSignatureReqInfo
+   </description>
+
+     </field>
+    <field name='releaseVersionIndicator' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.releaseVersionIndicator' qn='ResponsePrimitiveDTO.releaseVersionIndicator' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='ReleaseVersion' qualifiedTypeName='org.osgi.service.onem2m.dto.ReleaseVersion' dimension=''>
+   <lead>
+Release Version Indicator
+   </lead>
+   <description>
+Release Version Indicator
+   </description>
+
+     </field>
+    <field name='vendorInformation' fqn='org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.vendorInformation' qn='ResponsePrimitiveDTO.vendorInformation' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Vendor Information
+   </lead>
+   <description>
+Vendor Information
+ <p>
+ Used for vendor specific information. No procedure is defined for the
+ parameter.</p>
+   </description>
+
+     </field>
+  </class>
+  <class name='ResponseTypeInfoDTO' fqn='org.osgi.service.onem2m.dto.ResponseTypeInfoDTO' qn='ResponseTypeInfoDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+DTO expresses ResponseTypeInfo
+   </lead>
+   <description>
+DTO expresses ResponseTypeInfo
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.30</a><NotThreadSafe></NotThreadSafe>
+    <method name='ResponseTypeInfoDTO' fqn='org.osgi.service.onem2m.dto.ResponseTypeInfoDTO.ResponseTypeInfoDTO' qn='ResponseTypeInfoDTO.ResponseTypeInfoDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='responseTypeValue' fqn='org.osgi.service.onem2m.dto.ResponseTypeInfoDTO.responseTypeValue' qn='ResponseTypeInfoDTO.responseTypeValue' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='ResponseType' qualifiedTypeName='org.osgi.service.onem2m.dto.ResponseTypeInfoDTO.ResponseType' dimension=''>
+   <lead>
+Response Type Value
+   </lead>
+   <description>
+Response Type Value
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.6</a>
+     </field>
+    <field name='notificationURI' fqn='org.osgi.service.onem2m.dto.ResponseTypeInfoDTO.notificationURI' qn='ResponseTypeInfoDTO.notificationURI' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='List&lt;String&gt;' qualifiedTypeName='java.util.List' dimension=''>
+   <lead>
+Notification URI
+   </lead>
+   <description>
+Notification URI
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.30</a><a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.5</a>
+     </field>
+  </class>
+  <class name='SecurityInfoDTO' fqn='org.osgi.service.onem2m.dto.SecurityInfoDTO' qn='SecurityInfoDTO' package='org.osgi.service.onem2m.dto' typeParam='' modifiers='public class' superclass='DTO' kind='CLASS'>
+   <lead>
+DTO expresses Security Info.
+   </lead>
+   <description>
+DTO expresses Security Info.
+ <p>
+ This class is used as union. SecurityInfoType field indicates which type of
+ content is stored.</p>
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oenM2M
+      TS-0004 6.3.5.48</a><NotThreadSafe></NotThreadSafe>
+    <method name='SecurityInfoDTO' fqn='org.osgi.service.onem2m.dto.SecurityInfoDTO.SecurityInfoDTO' qn='SecurityInfoDTO.SecurityInfoDTO()' package='org.osgi.service.onem2m.dto' typeArgs='' modifiers='public' signature='()' flatSignature='()' isConstructor='true'>
+   <lead/>
+   <description/>
+     </method>
+    <field name='securityInfoType' fqn='org.osgi.service.onem2m.dto.SecurityInfoDTO.securityInfoType' qn='SecurityInfoDTO.securityInfoType' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='SecurityInfoType' qualifiedTypeName='org.osgi.service.onem2m.dto.SecurityInfoDTO.SecurityInfoType' dimension=''>
+   <lead>
+Security Info Type
+   </lead>
+   <description>
+Security Info Type
+   </description>
+<a href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oenM2M
+      TS-0004 6.3.4.2.35</a>
+     </field>
+    <field name='dasRequest' fqn='org.osgi.service.onem2m.dto.SecurityInfoDTO.dasRequest' qn='SecurityInfoDTO.dasRequest' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='GenericDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.GenericDTO' dimension=''>
+   <lead>
+Das Request
+   </lead>
+   <description>
+Das Request
+   </description>
+
+     </field>
+    <field name='dasResponse' fqn='org.osgi.service.onem2m.dto.SecurityInfoDTO.dasResponse' qn='SecurityInfoDTO.dasResponse' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='GenericDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.GenericDTO' dimension=''>
+   <lead>
+Das Response
+   </lead>
+   <description>
+Das Response
+   </description>
+
+     </field>
+    <field name='esprimRandObject' fqn='org.osgi.service.onem2m.dto.SecurityInfoDTO.esprimRandObject' qn='SecurityInfoDTO.esprimRandObject' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='GenericDTO' qualifiedTypeName='org.osgi.service.onem2m.dto.GenericDTO' dimension=''>
+   <lead>
+Esprim Rand Object
+   </lead>
+   <description>
+Esprim Rand Object
+   </description>
+
+     </field>
+    <field name='esprimObject' fqn='org.osgi.service.onem2m.dto.SecurityInfoDTO.esprimObject' qn='SecurityInfoDTO.esprimObject' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='String' qualifiedTypeName='java.lang.String' dimension=''>
+   <lead>
+Esprim Object
+   </lead>
+   <description>
+Esprim Object
+   </description>
+
+     </field>
+    <field name='escertkeMessage' fqn='org.osgi.service.onem2m.dto.SecurityInfoDTO.escertkeMessage' qn='SecurityInfoDTO.escertkeMessage' package='org.osgi.service.onem2m.dto' modifiers='public' typeName='byte[]' qualifiedTypeName='byte[]' dimension='[]'>
+   <lead>
+Escertke Message
+   </lead>
+   <description>
+Escertke Message
+   </description>
+
+     </field>
+  </class>
+  </package>
+</top>
