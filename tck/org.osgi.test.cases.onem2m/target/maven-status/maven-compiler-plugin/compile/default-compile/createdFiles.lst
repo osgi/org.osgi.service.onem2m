@@ -1,0 +1,3 @@
+org/osgi/test/cases/onem2m/junit/SignatureTestCase.class
+org/osgi/test/cases/onem2m/junit/ServiceLayerTestCase.class
+org/osgi/test/cases/onem2m/junit/ServiceLayerTestCase$MyListener.class

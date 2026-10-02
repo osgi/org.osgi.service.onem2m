@@ -1,0 +1,2803 @@
+<section xmlns="http://docbook.org/ns/docbook"
+         xreflabel="org.osgi.service.onem2m.dto"
+         version="5"
+         role="package"
+         xml:id="org.osgi.service.onem2m.dto">
+   <title>org.osgi.service.onem2m.dto</title>
+   <info>
+      <releaseinfo xml:id="org.osgi.service.onem2m.dto-version">Version 1.0</releaseinfo>
+      <edition xml:id="org.osgi.service.onem2m.dto-version.number">1.0</edition>
+   </info>
+   <para>
+Service Layer Data Transfer Objects for oneM2M Specification Package Version
+ 1.0.
+ </para>
+   <para>
+ Bundles wishing to use this package must list the package in the
+ Import-Package header of the bundle's manifest. This package has two types of
+ users: the consumers that use the API in this package and the providers that
+ implement the API in this package.
+ </para>
+   <para>
+ Example import for consumers using the API in this package:
+ </para>
+   <para>
+ {@code  Import-Package: org.osgi.service.onem2m.dto; version="[1.0,2.0)"}
+ </para>
+   <para>
+ Example import for providers implementing the API in this package:
+ </para>
+   <para>
+ {@code  Import-Package: org.osgi.service.onem2m.dto; version="[1.0,1.1)"}</para>
+   <section role="summary">
+      <title>Summary</title>
+      <itemizedlist>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.AttributeDTO">
+                  <code>AttributeDTO</code>
+               </link> - 
+DTO expresses Attribute.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.ChildResourceRefDTO">
+                  <code>ChildResourceRefDTO</code>
+               </link> - 
+DTO expresses ChildResourceRef.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.Constants">
+                  <code>Constants</code>
+               </link> - 
+This class defines constants for resource types.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.DasInfoDTO">
+                  <code>DasInfoDTO</code>
+               </link> - 
+DTO expresses DasInfo.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.FilterCriteriaDTO">
+                  <code>FilterCriteriaDTO</code>
+               </link> - 
+DTO expresses FilterCriteria.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.GenericDTO">
+                  <code>GenericDTO</code>
+               </link> - 
+GenericDTO expresses miscellaneous data structures of oneM2M.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.IPEDiscoveryRequestDTO">
+                  <code>IPEDiscoveryRequestDTO</code>
+               </link> - 
+IPEDiscoveryRequestDTO is an element of NotificationEventDTO
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.LocalTokenIdAssignmentDTO">
+                  <code>LocalTokenIdAssignmentDTO</code>
+               </link> - 
+DTO expresses LocalTokenIdAssignment.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.NotificationDTO">
+                  <code>NotificationDTO</code>
+               </link> - 
+DTO expresses Notification.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.NotificationEventDTO">
+                  <code>NotificationEventDTO</code>
+               </link> - 
+DTO expresses NotificationEventDTO
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.PrimitiveContentDTO">
+                  <code>PrimitiveContentDTO</code>
+               </link> - 
+DTO expresses Primitive Content.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.ReleaseVersion">
+                  <code>ReleaseVersion</code>
+               </link> - 
+enum expresses oneM2M specification version.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.RequestPrimitiveDTO">
+                  <code>RequestPrimitiveDTO</code>
+               </link> - 
+DTO expresses Request Primitive.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.ResourceDTO">
+                  <code>ResourceDTO</code>
+               </link> - 
+DTO expresses Resource.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.ResourceWrapperDTO">
+                  <code>ResourceWrapperDTO</code>
+               </link> - 
+DTO expresses ResourceWrapper.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO">
+                  <code>ResponsePrimitiveDTO</code>
+               </link> - 
+DTO expresses Response Primitive.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.ResponseTypeInfoDTO">
+                  <code>ResponseTypeInfoDTO</code>
+               </link> - 
+DTO expresses ResponseTypeInfo
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.dto.SecurityInfoDTO">
+                  <code>SecurityInfoDTO</code>
+               </link> - 
+DTO expresses Security Info.
+   </para>
+         </listitem>
+      </itemizedlist>
+   </section>
+   <section xreflabel="AttributeDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.AttributeDTO">
+      <title>public class AttributeDTO<?line-break?> extends DTO</title>
+      <para>
+DTO expresses Attribute.
+ </para>
+      <para>
+ This class is typically used in FilterCriteriaDTO for expressing matching
+ condition.</para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.9</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="name"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.AttributeDTO.name">
+         <title>public String name</title>
+         <para>
+Attribute name
+   </para>
+      </section>
+      <section xreflabel="value"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.AttributeDTO.value">
+         <title>public Object value</title>
+         <para>
+Supposed value of the attribute
+   </para>
+      </section>
+      <section xreflabel="AttributeDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.AttributeDTO.AttributeDTO--">
+         <title>public  AttributeDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="ChildResourceRefDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.ChildResourceRefDTO">
+      <title>public class ChildResourceRefDTO<?line-break?> extends DTO</title>
+      <para>
+DTO expresses ChildResourceRef.
+   </para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.29</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L885-893">oneM2M
+      XSD childResourceRef</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="name"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ChildResourceRefDTO.name">
+         <title>public String name</title>
+         <para>
+name of the child resource pointed to by the URI
+   </para>
+      </section>
+      <section xreflabel="specializationID"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ChildResourceRefDTO.specializationID">
+         <title>public String specializationID</title>
+         <para>
+resource type specialization of the child resource pointed to by the URI
+ in case type represents a flexContainer. This is an optional field.
+   </para>
+      </section>
+      <section xreflabel="type"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ChildResourceRefDTO.type">
+         <title>public Integer type</title>
+         <para>
+resourceType of the child resource pointed to by the URI
+   </para>
+      </section>
+      <section xreflabel="uri"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ChildResourceRefDTO.uri">
+         <title>public String uri</title>
+         <para>
+URI to the child resource.
+   </para>
+      </section>
+      <section xreflabel="ChildResourceRefDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.ChildResourceRefDTO.ChildResourceRefDTO--">
+         <title>public  ChildResourceRefDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="Constants"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.Constants">
+      <title>public final class Constants</title>
+      <para>
+This class defines constants for resource types.
+   </para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.1</link>
+         </para>
+      </formalpara>
+      <section xreflabel="RT_accessControlPolicy"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_accessControlPolicy">
+         <title>public static final int RT_accessControlPolicy = 1</title>
+         <para>
+resource type for accessControlPolicy
+   </para>
+      </section>
+      <section xreflabel="RT_accessControlPolicyAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_accessControlPolicyAnnc">
+         <title>public static final int RT_accessControlPolicyAnnc = 10001</title>
+         <para>
+resource type for accessControlPolicyAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_AE"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_AE">
+         <title>public static final int RT_AE = 2</title>
+         <para>
+resource type for AE
+   </para>
+      </section>
+      <section xreflabel="RT_AEAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_AEAnnc">
+         <title>public static final int RT_AEAnnc = 10002</title>
+         <para>
+resource type for AEAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_AEContactList"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_AEContactList">
+         <title>public static final int RT_AEContactList = 43</title>
+         <para>
+resource type for AEContactList
+   </para>
+      </section>
+      <section xreflabel="RT_AEContactListPerCSE"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_AEContactListPerCSE">
+         <title>public static final int RT_AEContactListPerCSE = 44</title>
+         <para>
+resource type for AEContactListPerCSE
+   </para>
+      </section>
+      <section xreflabel="RT_authorizationDecision"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_authorizationDecision">
+         <title>public static final int RT_authorizationDecision = 35</title>
+         <para>
+resource type for authorizationDecision
+   </para>
+      </section>
+      <section xreflabel="RT_authorizationInformation"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_authorizationInformation">
+         <title>public static final int RT_authorizationInformation = 37</title>
+         <para>
+resource type for authorizationInformation
+   </para>
+      </section>
+      <section xreflabel="RT_authorizationPolicy"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_authorizationPolicy">
+         <title>public static final int RT_authorizationPolicy = 36</title>
+         <para>
+resource type for authorizationPolicy
+   </para>
+      </section>
+      <section xreflabel="RT_backgroundDataTransfer"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_backgroundDataTransfer">
+         <title>public static final int RT_backgroundDataTransfer = 49</title>
+         <para>
+resource type for backgroundDataTransfer
+   </para>
+      </section>
+      <section xreflabel="RT_container"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_container">
+         <title>public static final int RT_container = 3</title>
+         <para>
+resource type for container
+   </para>
+      </section>
+      <section xreflabel="RT_containerAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_containerAnnc">
+         <title>public static final int RT_containerAnnc = 10003</title>
+         <para>
+resource type for containerAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_contentInstance"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_contentInstance">
+         <title>public static final int RT_contentInstance = 4</title>
+         <para>
+resource type for contentInstance
+   </para>
+      </section>
+      <section xreflabel="RT_contentInstanceAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_contentInstanceAnnc">
+         <title>public static final int RT_contentInstanceAnnc = 10004</title>
+         <para>
+resource type for contentInstanceAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_crossResourceSubscription"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_crossResourceSubscription">
+         <title>public static final int RT_crossResourceSubscription = 48</title>
+         <para>
+resource type for crossResourceSubscription
+   </para>
+      </section>
+      <section xreflabel="RT_CSEBase"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_CSEBase">
+         <title>public static final int RT_CSEBase = 5</title>
+         <para>
+resource type for CSEBase
+   </para>
+      </section>
+      <section xreflabel="RT_delivery"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_delivery">
+         <title>public static final int RT_delivery = 6</title>
+         <para>
+resource type for delivery
+   </para>
+      </section>
+      <section xreflabel="RT_dynamicAuthorizationConsultation"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_dynamicAuthorizationConsultation">
+         <title>public static final int RT_dynamicAuthorizationConsultation = 34</title>
+         <para>
+resource type for dynamicAuthorizationConsultation
+   </para>
+      </section>
+      <section xreflabel="RT_dynamicAuthorizationConsultationAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_dynamicAuthorizationConsultationAnnc">
+         <title>public static final int RT_dynamicAuthorizationConsultationAnnc = 10034</title>
+         <para>
+resource type for dynamicAuthorizationConsultationAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_eventConfig"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_eventConfig">
+         <title>public static final int RT_eventConfig = 7</title>
+         <para>
+resource type for eventConfig
+   </para>
+      </section>
+      <section xreflabel="RT_execInstance"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_execInstance">
+         <title>public static final int RT_execInstance = 8</title>
+         <para>
+resource type for execInstance
+   </para>
+      </section>
+      <section xreflabel="RT_flexContainer"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_flexContainer">
+         <title>public static final int RT_flexContainer = 28</title>
+         <para>
+resource type for flexContainer
+   </para>
+      </section>
+      <section xreflabel="RT_flexContainerAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_flexContainerAnnc">
+         <title>public static final int RT_flexContainerAnnc = 10028</title>
+         <para>
+resource type for flexContainerAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_group"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_group">
+         <title>public static final int RT_group = 9</title>
+         <para>
+resource type for group
+   </para>
+      </section>
+      <section xreflabel="RT_groupAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_groupAnnc">
+         <title>public static final int RT_groupAnnc = 10009</title>
+         <para>
+resource type for groupAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_localMulticastGroup"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_localMulticastGroup">
+         <title>public static final int RT_localMulticastGroup = 45</title>
+         <para>
+resource type for localMulticastGroup
+   </para>
+      </section>
+      <section xreflabel="RT_locationPolicy"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_locationPolicy">
+         <title>public static final int RT_locationPolicy = 10</title>
+         <para>
+resource type for locationPolicy
+   </para>
+      </section>
+      <section xreflabel="RT_locationPolicyAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_locationPolicyAnnc">
+         <title>public static final int RT_locationPolicyAnnc = 10010</title>
+         <para>
+resource type for locationPolicyAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_m2mServiceSubscriptionProfile"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_m2mServiceSubscriptionProfile">
+         <title>public static final int RT_m2mServiceSubscriptionProfile = 11</title>
+         <para>
+resource type for m2mServiceSubscriptionProfile
+   </para>
+      </section>
+      <section xreflabel="RT_mgmtCmd"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_mgmtCmd">
+         <title>public static final int RT_mgmtCmd = 12</title>
+         <para>
+resource type for mgmtCmd
+   </para>
+      </section>
+      <section xreflabel="RT_mgmtObj"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_mgmtObj">
+         <title>public static final int RT_mgmtObj = 13</title>
+         <para>
+resource type for mgmtObj
+   </para>
+      </section>
+      <section xreflabel="RT_mgmtObjAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_mgmtObjAnnc">
+         <title>public static final int RT_mgmtObjAnnc = 10013</title>
+         <para>
+resource type for mgmtObjAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_multimediaSession"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_multimediaSession">
+         <title>public static final int RT_multimediaSession = 46</title>
+         <para>
+resource type for multimediaSession
+   </para>
+      </section>
+      <section xreflabel="RT_multimediaSessionAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_multimediaSessionAnnc">
+         <title>public static final int RT_multimediaSessionAnnc = 10046</title>
+         <para>
+resource type for multimediaSessionAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_node"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_node">
+         <title>public static final int RT_node = 14</title>
+         <para>
+resource type for node
+   </para>
+      </section>
+      <section xreflabel="RT_nodeAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_nodeAnnc">
+         <title>public static final int RT_nodeAnnc = 10014</title>
+         <para>
+resource type for nodeAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_notificationTargetMgmtPolicyRef"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_notificationTargetMgmtPolicyRef">
+         <title>public static final int RT_notificationTargetMgmtPolicyRef = 25</title>
+         <para>
+resource type for notificationTargetMgmtPolicyRef
+   </para>
+      </section>
+      <section xreflabel="RT_notificationTargetPolicy"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_notificationTargetPolicy">
+         <title>public static final int RT_notificationTargetPolicy = 26</title>
+         <para>
+resource type for notificationTargetPolicy
+   </para>
+      </section>
+      <section xreflabel="RT_ontology"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_ontology">
+         <title>public static final int RT_ontology = 39</title>
+         <para>
+resource type for ontology
+   </para>
+      </section>
+      <section xreflabel="RT_ontologyAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_ontologyAnnc">
+         <title>public static final int RT_ontologyAnnc = 10039</title>
+         <para>
+resource type for ontologyAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_ontologyRepository"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_ontologyRepository">
+         <title>public static final int RT_ontologyRepository = 38</title>
+         <para>
+resource type for ontologyRepository
+   </para>
+      </section>
+      <section xreflabel="RT_ontologyRepositoryAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_ontologyRepositoryAnnc">
+         <title>public static final int RT_ontologyRepositoryAnnc = 10038</title>
+         <para>
+resource type for ontologyRepositoryAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_policyDeletionRules"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_policyDeletionRules">
+         <title>public static final int RT_policyDeletionRules = 27</title>
+         <para>
+resource type for policyDeletionRules
+   </para>
+      </section>
+      <section xreflabel="RT_pollingChannel"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_pollingChannel">
+         <title>public static final int RT_pollingChannel = 15</title>
+         <para>
+resource type for pollingChannel
+   </para>
+      </section>
+      <section xreflabel="RT_remoteCSE"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_remoteCSE">
+         <title>public static final int RT_remoteCSE = 16</title>
+         <para>
+resource type for remoteCSE
+   </para>
+      </section>
+      <section xreflabel="RT_remoteCSEAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_remoteCSEAnnc">
+         <title>public static final int RT_remoteCSEAnnc = 10016</title>
+         <para>
+resource type for remoteCSEAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_request"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_request">
+         <title>public static final int RT_request = 17</title>
+         <para>
+resource type for request
+   </para>
+      </section>
+      <section xreflabel="RT_role"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_role">
+         <title>public static final int RT_role = 31</title>
+         <para>
+resource type for role
+   </para>
+      </section>
+      <section xreflabel="RT_schedule"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_schedule">
+         <title>public static final int RT_schedule = 18</title>
+         <para>
+resource type for schedule
+   </para>
+      </section>
+      <section xreflabel="RT_scheduleAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_scheduleAnnc">
+         <title>public static final int RT_scheduleAnnc = 10018</title>
+         <para>
+resource type for scheduleAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_semanticDescriptor"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_semanticDescriptor">
+         <title>public static final int RT_semanticDescriptor = 24</title>
+         <para>
+resource type for semanticDescriptor
+   </para>
+      </section>
+      <section xreflabel="RT_semanticDescriptorAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_semanticDescriptorAnnc">
+         <title>public static final int RT_semanticDescriptorAnnc = 10024</title>
+         <para>
+resource type for semanticDescriptorAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_semanticMashupInstance"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_semanticMashupInstance">
+         <title>public static final int RT_semanticMashupInstance = 41</title>
+         <para>
+resource type for semanticMashupInstance
+   </para>
+      </section>
+      <section xreflabel="RT_semanticMashupInstanceAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_semanticMashupInstanceAnnc">
+         <title>public static final int RT_semanticMashupInstanceAnnc = 10041</title>
+         <para>
+resource type for semanticMashupInstanceAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_semanticMashupJobProfile"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_semanticMashupJobProfile">
+         <title>public static final int RT_semanticMashupJobProfile = 40</title>
+         <para>
+resource type for semanticMashupJobProfile
+   </para>
+      </section>
+      <section xreflabel="RT_semanticMashupJobProfileAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_semanticMashupJobProfileAnnc">
+         <title>public static final int RT_semanticMashupJobProfileAnnc = 10040</title>
+         <para>
+resource type for semanticMashupJobProfileAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_semanticMashupResult"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_semanticMashupResult">
+         <title>public static final int RT_semanticMashupResult = 42</title>
+         <para>
+resource type for semanticMashupResult
+   </para>
+      </section>
+      <section xreflabel="RT_semanticMashupResultAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_semanticMashupResultAnnc">
+         <title>public static final int RT_semanticMashupResultAnnc = 10042</title>
+         <para>
+resource type for semanticMashupResultAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_serviceSubscribedAppRule"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_serviceSubscribedAppRule">
+         <title>public static final int RT_serviceSubscribedAppRule = 19</title>
+         <para>
+resource type for serviceSubscribedAppRule
+   </para>
+      </section>
+      <section xreflabel="RT_serviceSubscribedNode"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_serviceSubscribedNode">
+         <title>public static final int RT_serviceSubscribedNode = 20</title>
+         <para>
+resource type for serviceSubscribedNode
+   </para>
+      </section>
+      <section xreflabel="RT_statsCollect"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_statsCollect">
+         <title>public static final int RT_statsCollect = 21</title>
+         <para>
+resource type for statsCollect
+   </para>
+      </section>
+      <section xreflabel="RT_statsConfig"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_statsConfig">
+         <title>public static final int RT_statsConfig = 22</title>
+         <para>
+resource type for
+   </para>
+      </section>
+      <section xreflabel="RT_subscription"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_subscription">
+         <title>public static final int RT_subscription = 23</title>
+         <para>
+resource type for statsConfig
+   </para>
+      </section>
+      <section xreflabel="RT_timeSeries"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_timeSeries">
+         <title>public static final int RT_timeSeries = 29</title>
+         <para>
+resource type for timeSeries
+   </para>
+      </section>
+      <section xreflabel="RT_timeSeriesAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_timeSeriesAnnc">
+         <title>public static final int RT_timeSeriesAnnc = 10029</title>
+         <para>
+resource type for timeSeriesAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_timeSeriesInstance"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_timeSeriesInstance">
+         <title>public static final int RT_timeSeriesInstance = 30</title>
+         <para>
+resource type for timeSeriesInstance
+   </para>
+      </section>
+      <section xreflabel="RT_timeSeriesInstanceAnnc"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_timeSeriesInstanceAnnc">
+         <title>public static final int RT_timeSeriesInstanceAnnc = 10030</title>
+         <para>
+resource type for timeSeriesInstanceAnnc
+   </para>
+      </section>
+      <section xreflabel="RT_token"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_token">
+         <title>public static final int RT_token = 32</title>
+         <para>
+resource type for token
+   </para>
+      </section>
+      <section xreflabel="RT_transaction"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_transaction">
+         <title>public static final int RT_transaction = 51</title>
+         <para>
+resource type for transaction
+   </para>
+      </section>
+      <section xreflabel="RT_transactionMgmt"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_transactionMgmt">
+         <title>public static final int RT_transactionMgmt = 50</title>
+         <para>
+resource type for transactionMgmt
+   </para>
+      </section>
+      <section xreflabel="RT_triggerRequest"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.Constants.RT_triggerRequest">
+         <title>public static final int RT_triggerRequest = 47</title>
+         <para>
+resource type for triggerRequest
+   </para>
+      </section>
+   </section>
+   <section xreflabel="DasInfoDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.DasInfoDTO">
+      <title>public class DasInfoDTO<?line-break?> extends DTO</title>
+      <para>
+DTO expresses DasInfo. DAS is short for Dynamic Authorization Server.
+   </para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.45</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L1135-1147">oneM2M
+      XSD dynAuthTokenReqInfo and dasInfo</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="dasRequest"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.DasInfoDTO.dasRequest">
+         <title>public GenericDTO dasRequest</title>
+         <para>
+Information to send to the Dynamic Authorization Server
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L1149-1198">oneM2M
+      XSD dynAuthDasRequest</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="securedDasRequest"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.DasInfoDTO.securedDasRequest">
+         <title>public String securedDasRequest</title>
+         <para>
+Secured Information to send to the Dynamic Authorization Server. JWS or
+ JWE is assigned to this field.
+   </para>
+      </section>
+      <section xreflabel="uri"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.DasInfoDTO.uri">
+         <title>public String uri</title>
+         <para>
+Dynamic Authorization Server URI
+   </para>
+      </section>
+      <section xreflabel="DasInfoDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.DasInfoDTO.DasInfoDTO--">
+         <title>public  DasInfoDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="FilterCriteriaDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO">
+      <title>public class FilterCriteriaDTO<?line-break?> extends DTO</title>
+      <para>
+DTO expresses FilterCriteria. This data structure is used for searching
+ resources.
+   </para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.8</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oenM2M
+      TS-0004 7.3.3.17.17</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="applyRelativePath"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.applyRelativePath">
+         <title>public String applyRelativePath</title>
+         <para>
+Apply Relative Path
+   </para>
+      </section>
+      <section xreflabel="attribute"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.attribute">
+         <title>public List&lt;AttributeDTO&gt; attribute</title>
+         <para>
+Attribute
+   </para>
+      </section>
+      <section xreflabel="childAttribute"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.childAttribute">
+         <title>public List&lt;AttributeDTO&gt; childAttribute</title>
+         <para>
+Child Attribute
+   </para>
+      </section>
+      <section xreflabel="childLabels"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.childLabels">
+         <title>public List&lt;String&gt; childLabels</title>
+         <para>
+Child Labels
+   </para>
+      </section>
+      <section xreflabel="childResourceType"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.childResourceType">
+         <title>public List&lt;Integer&gt; childResourceType</title>
+         <para>
+Child Resource Type
+   </para>
+      </section>
+      <section xreflabel="contentFilterQuery"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.contentFilterQuery">
+         <title>public String contentFilterQuery</title>
+         <para>
+Content Filter Query
+   </para>
+      </section>
+      <section xreflabel="contentFilterSyntax"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.contentFilterSyntax">
+         <title>public Integer contentFilterSyntax</title>
+         <para>
+Content Filter Syntax
+   </para>
+      </section>
+      <section xreflabel="contentType"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.contentType">
+         <title>public List&lt;String&gt; contentType</title>
+         <para>
+Content Type
+   </para>
+      </section>
+      <section xreflabel="createdAfter"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.createdAfter">
+         <title>public String createdAfter</title>
+         <para>
+Created After
+   </para>
+      </section>
+      <section xreflabel="createdBefore"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.createdBefore">
+         <title>public String createdBefore</title>
+         <para>
+Created Before
+   </para>
+      </section>
+      <section xreflabel="expireAfter"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.expireAfter">
+         <title>public String expireAfter</title>
+         <para>
+Expire After
+   </para>
+      </section>
+      <section xreflabel="expireBefore"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.expireBefore">
+         <title>public String expireBefore</title>
+         <para>
+Expire Before
+   </para>
+      </section>
+      <section xreflabel="filterOperation"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.filterOperation">
+         <title>public FilterOperation filterOperation</title>
+         <para>
+Filter Operation
+   </para>
+      </section>
+      <section xreflabel="filterUsage"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.filterUsage">
+         <title>public FilterUsage filterUsage</title>
+         <para>
+Filter Usage
+   </para>
+      </section>
+      <section xreflabel="labels"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.labels">
+         <title>public List&lt;String&gt; labels</title>
+         <para>
+Labels
+   </para>
+      </section>
+      <section xreflabel="labelsQuery"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.labelsQuery">
+         <title>public String labelsQuery</title>
+         <para>
+Label Query
+   </para>
+      </section>
+      <section xreflabel="level"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.level">
+         <title>public Integer level</title>
+         <para>
+Level
+   </para>
+      </section>
+      <section xreflabel="limit"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.limit">
+         <title>public Integer limit</title>
+         <para>
+Limit number of Answers
+   </para>
+      </section>
+      <section xreflabel="modifiedSince"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.modifiedSince">
+         <title>public String modifiedSince</title>
+         <para>
+Modified Since
+   </para>
+      </section>
+      <section xreflabel="offset"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.offset">
+         <title>public Integer offset</title>
+         <para>
+Offset
+   </para>
+      </section>
+      <section xreflabel="parentAttribute"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.parentAttribute">
+         <title>public List&lt;AttributeDTO&gt; parentAttribute</title>
+         <para>
+Parent Attribute
+   </para>
+      </section>
+      <section xreflabel="parentLabels"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.parentLabels">
+         <title>public List&lt;String&gt; parentLabels</title>
+         <para>
+Parent Labels
+   </para>
+      </section>
+      <section xreflabel="parentResourceType"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.parentResourceType">
+         <title>public List&lt;Integer&gt; parentResourceType</title>
+         <para>
+Parent Resource Type
+   </para>
+      </section>
+      <section xreflabel="resourceType"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.resourceType">
+         <title>public List&lt;Integer&gt; resourceType</title>
+         <para>
+Resource Type
+   </para>
+      </section>
+      <section xreflabel="semanticsFilter"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.semanticsFilter">
+         <title>public List&lt;String&gt; semanticsFilter</title>
+         <para>
+Semantic Filter
+   </para>
+      </section>
+      <section xreflabel="sizeAbove"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.sizeAbove">
+         <title>public Integer sizeAbove</title>
+         <para>
+Size Above
+   </para>
+      </section>
+      <section xreflabel="sizeBelow"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.sizeBelow">
+         <title>public Integer sizeBelow</title>
+         <para>
+Size Below
+   </para>
+      </section>
+      <section xreflabel="stateTagBigger"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.stateTagBigger">
+         <title>public Integer stateTagBigger</title>
+         <para>
+State Tag Bigger
+   </para>
+      </section>
+      <section xreflabel="stateTagSmaller"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.stateTagSmaller">
+         <title>public Integer stateTagSmaller</title>
+         <para>
+State Tag Smaller
+   </para>
+      </section>
+      <section xreflabel="unmodifiedSince"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.unmodifiedSince">
+         <title>public String unmodifiedSince</title>
+         <para>
+Unmodified Since
+   </para>
+      </section>
+      <section xreflabel="FilterCriteriaDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.FilterCriteriaDTO.FilterCriteriaDTO--">
+         <title>public  FilterCriteriaDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="GenericDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.GenericDTO">
+      <title>public class GenericDTO<?line-break?> extends DTO</title>
+      <para>
+GenericDTO expresses miscellaneous data structures of oneM2M.
+   </para>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="element"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.GenericDTO.element">
+         <title>public Map&lt;String, Object&gt; element</title>
+         <para>
+Substructure of DTO. Type of the value part should be one of types
+ allowed as OSGi DTO.
+   </para>
+      </section>
+      <section xreflabel="GenericDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.GenericDTO.GenericDTO--">
+         <title>public  GenericDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="IPEDiscoveryRequestDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.IPEDiscoveryRequestDTO">
+      <title>public class IPEDiscoveryRequestDTO<?line-break?> extends DTO</title>
+      <para>
+IPEDiscoveryRequestDTO is an element of NotificationEventDTO
+   </para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.13</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="filterCriteria"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.IPEDiscoveryRequestDTO.filterCriteria">
+         <title>public FilterCriteriaDTO filterCriteria</title>
+         <para>
+FilterCriteria
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.8</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="originator"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.IPEDiscoveryRequestDTO.originator">
+         <title>public String originator</title>
+         <para>
+originator
+   </para>
+      </section>
+      <section xreflabel="IPEDiscoveryRequestDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.IPEDiscoveryRequestDTO.IPEDiscoveryRequestDTO--">
+         <title>public  IPEDiscoveryRequestDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="LocalTokenIdAssignmentDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.LocalTokenIdAssignmentDTO">
+      <title>public class LocalTokenIdAssignmentDTO<?line-break?> extends DTO</title>
+      <para>
+DTO expresses LocalTokenIdAssignment.
+   </para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L1112-1123">oneM2M
+      XSD dynAuthLocalTokenIdAssignments and localTokenIdAssignment</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="localTokenID"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.LocalTokenIdAssignmentDTO.localTokenID">
+         <title>public String localTokenID</title>
+         <para>
+local token ID
+   </para>
+      </section>
+      <section xreflabel="tokenID"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.LocalTokenIdAssignmentDTO.tokenID">
+         <title>public String tokenID</title>
+         <para>
+token ID
+   </para>
+      </section>
+      <section xreflabel="LocalTokenIdAssignmentDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.LocalTokenIdAssignmentDTO.LocalTokenIdAssignmentDTO--">
+         <title>public  LocalTokenIdAssignmentDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="NotificationDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.NotificationDTO">
+      <title>public class NotificationDTO<?line-break?> extends DTO</title>
+      <para>
+DTO expresses Notification.
+   </para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.13</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="aeReferenceIDChange"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationDTO.aeReferenceIDChange">
+         <title>public Boolean aeReferenceIDChange</title>
+         <para>
+aeReferenceIDChange element
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.17</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="aeRegistrationPointChange"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationDTO.aeRegistrationPointChange">
+         <title>public Boolean aeRegistrationPointChange</title>
+         <para>
+AE Registration Point Change
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.16</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="creator"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationDTO.creator">
+         <title>public String creator</title>
+         <para>
+creator
+   </para>
+      </section>
+      <section xreflabel="ipeDiscoveryRequest"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationDTO.ipeDiscoveryRequest">
+         <title>public IPEDiscoveryRequestDTO ipeDiscoveryRequest</title>
+         <para>
+IPE Discovery Request.
+   </para>
+      </section>
+      <section xreflabel="notificationEvent"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationDTO.notificationEvent">
+         <title>public NotificationEventDTO notificationEvent</title>
+         <para>
+Notification Event
+   </para>
+      </section>
+      <section xreflabel="notificationForwardingURI"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationDTO.notificationForwardingURI">
+         <title>public String notificationForwardingURI</title>
+         <para>
+notification forwarding URI
+   </para>
+      </section>
+      <section xreflabel="notificationTarget"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationDTO.notificationTarget">
+         <title>public String notificationTarget</title>
+         <para>
+ID for notification target
+   </para>
+      </section>
+      <section xreflabel="subscriptionDeletion"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationDTO.subscriptionDeletion">
+         <title>public Boolean subscriptionDeletion</title>
+         <para>
+Flag showing subscription deletion This field is optional.
+   </para>
+      </section>
+      <section xreflabel="subscriptionReference"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationDTO.subscriptionReference">
+         <title>public String subscriptionReference</title>
+         <para>
+URI referring subscription resource.
+   </para>
+      </section>
+      <section xreflabel="trackingID1"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationDTO.trackingID1">
+         <title>public String trackingID1</title>
+         <para>
+tracking ID 1
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.16</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.17</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="trackingID2"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationDTO.trackingID2">
+         <title>public String trackingID2</title>
+         <para>
+tracking ID 1
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.16</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.17</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="verificationRequest"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationDTO.verificationRequest">
+         <title>public Boolean verificationRequest</title>
+         <para>
+Flag showing verification request. This field is optional.
+   </para>
+      </section>
+      <section xreflabel="NotificationDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.NotificationDTO.NotificationDTO--">
+         <title>public  NotificationDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="NotificationEventDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.NotificationEventDTO">
+      <title>public class NotificationEventDTO</title>
+      <para>
+DTO expresses NotificationEventDTO
+ </para>
+      <para>
+ This data structure is held in NotificationDTO.</para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.13</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="notificationEventType"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationEventDTO.notificationEventType">
+         <title>public NotificationEventType notificationEventType</title>
+         <para>
+notificationEventType
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.19</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="operationMonitor"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationEventDTO.operationMonitor">
+         <title>public Map&lt;String, Object&gt; operationMonitor</title>
+         <para>
+operationMonitor
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.57</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="representation"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.NotificationEventDTO.representation">
+         <title>public Object representation</title>
+         <para>
+m2m:representation
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.62</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="NotificationEventDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.NotificationEventDTO.NotificationEventDTO--">
+         <title>public  NotificationEventDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="PrimitiveContentDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO">
+      <title>public class PrimitiveContentDTO<?line-break?> extends DTO</title>
+      <para>
+DTO expresses Primitive Content.
+ </para>
+      <para>
+ This Data structure is used as union. Only one field MUST have a value, the
+ others MUST be null.</para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.5</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.2.1</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L596-602">oneM2M
+      XSD primitiveContent</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="aggregatedNotification"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.aggregatedNotification">
+         <title>public List&lt;NotificationDTO&gt; aggregatedNotification</title>
+         <para>
+Aggregated Notification
+   </para>
+      </section>
+      <section xreflabel="aggregatedResponse"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.aggregatedResponse">
+         <title>public List&lt;ResponsePrimitiveDTO&gt; aggregatedResponse</title>
+         <para>
+Aggregated Response
+   </para>
+      </section>
+      <section xreflabel="attributeList"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.attributeList">
+         <title>public List&lt;String&gt; attributeList</title>
+         <para>
+Attribute List
+   </para>
+      </section>
+      <section xreflabel="childResourceRefList"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.childResourceRefList">
+         <title>public List&lt;ChildResourceRefDTO&gt; childResourceRefList</title>
+         <para>
+Child Resource RefList
+   </para>
+      </section>
+      <section xreflabel="debugInfo"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.debugInfo">
+         <title>public String debugInfo</title>
+         <para>
+Debug Info
+   </para>
+      </section>
+      <section xreflabel="listOfURIs"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.listOfURIs">
+         <title>public List&lt;String&gt; listOfURIs</title>
+         <para>
+List Of URIs
+   </para>
+      </section>
+      <section xreflabel="notification"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.notification">
+         <title>public NotificationDTO notification</title>
+         <para>
+Notification
+   </para>
+      </section>
+      <section xreflabel="queryResult"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.queryResult">
+         <title>public String queryResult</title>
+         <para>
+Query Result
+   </para>
+      </section>
+      <section xreflabel="requestPrimitive"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.requestPrimitive">
+         <title>public RequestPrimitiveDTO requestPrimitive</title>
+         <para>
+Request Primitive
+   </para>
+      </section>
+      <section xreflabel="resource"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.resource">
+         <title>public ResourceDTO resource</title>
+         <para>
+Resource
+   </para>
+      </section>
+      <section xreflabel="resourceWrapper"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.resourceWrapper">
+         <title>public ResourceWrapperDTO resourceWrapper</title>
+         <para>
+Resource Wrapper
+   </para>
+      </section>
+      <section xreflabel="responsePrimitive"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.responsePrimitive">
+         <title>public ResponsePrimitiveDTO responsePrimitive</title>
+         <para>
+Response Primitive
+   </para>
+      </section>
+      <section xreflabel="securityInfo"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.securityInfo">
+         <title>public SecurityInfoDTO securityInfo</title>
+         <para>
+Security Info
+   </para>
+      </section>
+      <section xreflabel="uri"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.uri">
+         <title>public String uri</title>
+         <para>
+URI
+   </para>
+      </section>
+      <section xreflabel="PrimitiveContentDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.PrimitiveContentDTO.PrimitiveContentDTO--">
+         <title>public  PrimitiveContentDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="ReleaseVersion"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.ReleaseVersion">
+      <title>enum ReleaseVersion</title>
+      <para>
+enum expresses oneM2M specification version.
+ </para>
+      <para>
+ This information is introduced after Release 2.0 and oneM2M uses only R2A,
+ R3_0 (as 2a and 3).</para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L450-455">oneM2M
+      XSD releaseVersion</link>
+         </para>
+      </formalpara>
+      <section xreflabel="R1_0"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ReleaseVersion.R1_0">
+         <title>R1_0</title>
+         <para>
+Release 1
+   </para>
+      </section>
+      <section xreflabel="R1_1"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ReleaseVersion.R1_1">
+         <title>R1_1</title>
+         <para>
+Release 1.1
+   </para>
+      </section>
+      <section xreflabel="R2_0"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ReleaseVersion.R2_0">
+         <title>R2_0</title>
+         <para>
+Release 2
+   </para>
+      </section>
+      <section xreflabel="R2A"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ReleaseVersion.R2A">
+         <title>R2A</title>
+         <para>
+Release 2A
+   </para>
+      </section>
+      <section xreflabel="R3_0"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ReleaseVersion.R3_0">
+         <title>R3_0</title>
+         <para>
+Release 3
+   </para>
+      </section>
+      <section xreflabel="R4_0"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ReleaseVersion.R4_0">
+         <title>R4_0</title>
+         <para>
+Release 4 (reserved for future)
+   </para>
+      </section>
+      <section xreflabel="R5_0"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ReleaseVersion.R5_0">
+         <title>R5_0</title>
+         <para>
+Release 5 (reserved for future)
+   </para>
+      </section>
+      <section xreflabel="valueOf(String)"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.ReleaseVersion.valueOf-String-">
+         <title>public static ReleaseVersion valueOf(String name)</title>
+         <para/>
+      </section>
+      <section xreflabel="values()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.ReleaseVersion.values--">
+         <title>public static ReleaseVersion[][] values()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="RequestPrimitiveDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO">
+      <title>public class RequestPrimitiveDTO<?line-break?> extends DTO</title>
+      <para>
+DTO expresses Request Primitive.
+   </para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.4.1</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-requestPrimitive-v3_11_0.xsd">oneM2M
+      XSD requestPrimitive</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="authorizationRelationshipIndicator"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.authorizationRelationshipIndicator">
+         <title>public Boolean authorizationRelationshipIndicator</title>
+         <para>
+Authorization Relationship Indicator
+   </para>
+      </section>
+      <section xreflabel="authorizationSignatureIndicator"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.authorizationSignatureIndicator">
+         <title>public Boolean authorizationSignatureIndicator</title>
+         <para>
+Authorization Signature Indicator
+   </para>
+      </section>
+      <section xreflabel="authorizationSignatures"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.authorizationSignatures">
+         <title>public List&lt;String&gt; authorizationSignatures</title>
+         <para>
+Authorization Signatures
+ </para>
+         <para>
+ In oneM2M this parameter is expressed in m2m:signatureList.</para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.8</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L129-137">oneM2M
+      XSD signatureList</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="content"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.content">
+         <title>public PrimitiveContentDTO content</title>
+         <para>
+Primitive Content
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.5</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.2.1.1</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="deliveryAggregation"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.deliveryAggregation">
+         <title>public Boolean deliveryAggregation</title>
+         <para>
+Delivery Aggregation
+ </para>
+         <para>
+ This parameter is related to CMDH(Communication Management and Delivery
+ Handling) policy.</para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 D.12</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="desiredIdentifierResultType"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.desiredIdentifierResultType">
+         <title>public DesiredIdentifierResultType desiredIdentifierResultType</title>
+         <para>
+Desired Identifier Result Type
+ </para>
+         <para>
+ This parameter specifies identifier type in response, such as structured
+ or unstructured. This parameter used to be Discovery Result Type in
+ previous oneM2M release.</para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.8</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="eventCategory"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.eventCategory">
+         <title>public Integer eventCategory</title>
+         <para>
+Event Category
+ </para>
+         <para>
+ allowed values are 2(Immediate), 3(BestEffort), 4(Latest), and 100-999 as
+ user defined range.</para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.3</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L326">oneM2M
+      XSD eventCat</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-enumerationTypes-v3_11_0.xsd#L208-221">oneM2M
+      XSD stdEventCats</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="filterCriteria"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.filterCriteria">
+         <title>public FilterCriteriaDTO filterCriteria</title>
+         <para>
+Filter Criteria
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.8</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="from"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.from">
+         <title>public String from</title>
+         <para>
+From Parameter.
+ </para>
+         <para>
+ Originator of the request is stored.</para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.5</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="groupRequestIdentifier"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.groupRequestIdentifier">
+         <title>public String groupRequestIdentifier</title>
+         <para>
+Group Request Identifier TODO: search doc.
+   </para>
+      </section>
+      <section xreflabel="groupRequestTargetMembers"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.groupRequestTargetMembers">
+         <title>public List&lt;String&gt; groupRequestTargetMembers</title>
+         <para>
+Group Request Target Members
+   </para>
+      </section>
+      <section xreflabel="localTokenIDs"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.localTokenIDs">
+         <title>public List&lt;String&gt; localTokenIDs</title>
+         <para>
+Local Token Identifiers
+ </para>
+         <para>
+ In oneM2M this parameter is expressed as list of xs:NCName.</para>
+      </section>
+      <section xreflabel="operation"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.operation">
+         <title>public Operation operation</title>
+         <para>
+Operation This field is mandatory.
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.5</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="operationExecutionTime"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.operationExecutionTime">
+         <title>public String operationExecutionTime</title>
+         <para>
+Operation Execution Time
+   </para>
+      </section>
+      <section xreflabel="originatingTimestamp"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.originatingTimestamp">
+         <title>public String originatingTimestamp</title>
+         <para>
+Originating Timestamp
+   </para>
+      </section>
+      <section xreflabel="releaseVersionIndicator"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.releaseVersionIndicator">
+         <title>public ReleaseVersion releaseVersionIndicator</title>
+         <para>
+Release Version
+   </para>
+      </section>
+      <section xreflabel="requestExpirationTimestamp"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.requestExpirationTimestamp">
+         <title>public String requestExpirationTimestamp</title>
+         <para>
+Request Expiration Timestamp
+ </para>
+         <para>
+ * This parameter is related to CMDH(Communication Management and Delivery
+ Handling) policy.</para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 D.12</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="requestIdentifier"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.requestIdentifier">
+         <title>public String requestIdentifier</title>
+         <para>
+Request Identifier
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.3</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="resourceType"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.resourceType">
+         <title>public Integer resourceType</title>
+         <para>
+Resource Type
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.1</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="responseType"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.responseType">
+         <title>public ResponseTypeInfoDTO responseType</title>
+         <para>
+Response Type Info
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.30</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="resultContent"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.resultContent">
+         <title>public ResultContent resultContent</title>
+         <para>
+Result Content
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.7</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="resultExpirationTimestamp"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.resultExpirationTimestamp">
+         <title>public String resultExpirationTimestamp</title>
+         <para>
+Result Expiration Timestamp
+ </para>
+         <para>
+ This parameter is related to CMDH(Communication Management and Delivery
+ Handling) policy.</para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 D.12</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="resultPersistence"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.resultPersistence">
+         <title>public String resultPersistence</title>
+         <para>
+Result Persistence
+ </para>
+         <para>
+ This parameter is related to CMDH(Communication Management and Delivery
+ Handling) policy.</para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 D.12</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="roleIDs"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.roleIDs">
+         <title>public List&lt;String&gt; roleIDs</title>
+         <para>
+Role IDs
+   </para>
+      </section>
+      <section xreflabel="semanticQueryIndicator"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.semanticQueryIndicator">
+         <title>public Boolean semanticQueryIndicator</title>
+         <para>
+Semantic Query Indicator
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.3.3.19</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="to"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.to">
+         <title>public String to</title>
+         <para>
+To Parameter
+   </para>
+      </section>
+      <section xreflabel="tokenIDs"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.tokenIDs">
+         <title>public List&lt;String&gt; tokenIDs</title>
+         <para>
+Token Identifiers
+ </para>
+         <para>
+ In oneM2M this parameter is expressed as list of m2m:tokenID.</para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L66-70">oneM2M
+      XSD signatureList</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="tokenRequestIndicator"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.tokenRequestIndicator">
+         <title>public Boolean tokenRequestIndicator</title>
+         <para>
+Token Request Indicator
+   </para>
+      </section>
+      <section xreflabel="tokens"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.tokens">
+         <title>public List&lt;String&gt; tokens</title>
+         <para>
+Tokens
+ </para>
+         <para>
+ Each token is in m2m:dynAuthJWT</para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L417-426">oneM2M
+      XSD signatureList</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="vendorInformation"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.vendorInformation">
+         <title>public String vendorInformation</title>
+         <para>
+Vendor Information
+ </para>
+         <para>
+ Used for vendor specific information. No procedure is defined for the
+ parameter.</para>
+      </section>
+      <section xreflabel="RequestPrimitiveDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.RequestPrimitiveDTO.RequestPrimitiveDTO--">
+         <title>public  RequestPrimitiveDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="ResourceDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.ResourceDTO">
+      <title>public class ResourceDTO<?line-break?> extends DTO</title>
+      <para>
+DTO expresses Resource.
+ </para>
+      <para>
+ Universal attributes are expressed in field of the class. Common attributes
+ and other attributes are stored in attribute field.</para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="attribute"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResourceDTO.attribute">
+         <title>public Map&lt;String, Object&gt; attribute</title>
+         <para>
+Non Universal Attribute. Value Part must be the types that are allowed
+ for OSGi DTO. In case of value part can be expressed DTO in this package,
+ the DTO must be used. In case of value part have sub-elements, GenericDTO
+ must be used.
+   </para>
+      </section>
+      <section xreflabel="creationTime"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResourceDTO.creationTime">
+         <title>public String creationTime</title>
+         <para>
+Creation time
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="lastModifiedTime"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResourceDTO.lastModifiedTime">
+         <title>public String lastModifiedTime</title>
+         <para>
+last modified time
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="parentID"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResourceDTO.parentID">
+         <title>public String parentID</title>
+         <para>
+Parent ID Resource ID of parent resource.
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="resourceID"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResourceDTO.resourceID">
+         <title>public String resourceID</title>
+         <para>
+Resource ID
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="resourceName"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResourceDTO.resourceName">
+         <title>public String resourceName</title>
+         <para>
+Resource name
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="resourceType"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResourceDTO.resourceType">
+         <title>public Integer resourceType</title>
+         <para>
+Resource Type
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0001-Functional_Architecture-V3_15_1.pdf">oneM2M
+      TS-0001 9.6.1.3.1</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oenM2M
+      TS-0004 6.3.4.2.1</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="ResourceDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.ResourceDTO.ResourceDTO--">
+         <title>public  ResourceDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="ResourceWrapperDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.ResourceWrapperDTO">
+      <title>public class ResourceWrapperDTO<?line-break?> extends DTO</title>
+      <para>
+DTO expresses ResourceWrapper.
+   </para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.25</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="resource"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResourceWrapperDTO.resource">
+         <title>public ResourceDTO resource</title>
+         <para>
+Resource
+   </para>
+      </section>
+      <section xreflabel="uri"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResourceWrapperDTO.uri">
+         <title>public String uri</title>
+         <para>
+Hierarchical URI of the resource
+   </para>
+      </section>
+      <section xreflabel="ResourceWrapperDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.ResourceWrapperDTO.ResourceWrapperDTO--">
+         <title>public  ResourceWrapperDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="ResponsePrimitiveDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO">
+      <title>public class ResponsePrimitiveDTO<?line-break?> extends DTO</title>
+      <para>
+DTO expresses Response Primitive.
+   </para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.4.2</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-responsePrimitive-v3_11_0.xsd">oneM2M
+      XSD responsePrimitive</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="assignedTokenIdentifiers"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.assignedTokenIdentifiers">
+         <title>public List&lt;LocalTokenIdAssignmentDTO&gt; assignedTokenIdentifiers</title>
+         <para>
+Assigned Token Identifiers
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.43</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="AuthSignatureReqInfo"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.AuthSignatureReqInfo">
+         <title>public Boolean AuthSignatureReqInfo</title>
+         <para>
+AuthSignatureReqInfo
+   </para>
+      </section>
+      <section xreflabel="content"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.content">
+         <title>public PrimitiveContentDTO content</title>
+         <para>
+Primitive Content
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.5</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.2.1.2</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="contentOffset"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.contentOffset">
+         <title>public Integer contentOffset</title>
+         <para>
+Content Offset
+   </para>
+      </section>
+      <section xreflabel="contentStatus"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.contentStatus">
+         <title>public ContentStatus contentStatus</title>
+         <para>
+Content Status
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.44</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="eventCategory"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.eventCategory">
+         <title>public Integer eventCategory</title>
+         <para>
+Event Category
+ </para>
+         <para>
+ allowed values are 2(Immediate), 3(BestEffort), 4(Latest), and 100-999 as
+ user defined range.</para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.3</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-commonTypes-v3_11_0.xsd#L326">oneM2M
+      XSD eventCat</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="https://git.onem2m.org/PRO/XSD/blob/master/v3_11_0/CDT-enumerationTypes-v3_11_0.xsd#L208-221">oneM2M
+      XSD stdEventCats</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="from"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.from">
+         <title>public String from</title>
+         <para>
+From Parameter
+   </para>
+      </section>
+      <section xreflabel="originatingTimestamp"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.originatingTimestamp">
+         <title>public String originatingTimestamp</title>
+         <para>
+Originating Timestamp To Parameter
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 Table 6.3.3-1</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="releaseVersionIndicator"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.releaseVersionIndicator">
+         <title>public ReleaseVersion releaseVersionIndicator</title>
+         <para>
+Release Version Indicator
+   </para>
+      </section>
+      <section xreflabel="requestIdentifier"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.requestIdentifier">
+         <title>public String requestIdentifier</title>
+         <para>
+Request Identifier
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.3</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="responseStatusCode"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.responseStatusCode">
+         <title>public Integer responseStatusCode</title>
+         <para>
+Response Status Code
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.9</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="resultExpirationTimestamp"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.resultExpirationTimestamp">
+         <title>public String resultExpirationTimestamp</title>
+         <para>
+ResultExpiration Timestamp
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 Table 6.3.3-1</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="to"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.to">
+         <title>public String to</title>
+         <para>
+To Parameter
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.3</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="tokenReqInfo"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.tokenReqInfo">
+         <title>public List&lt;DasInfoDTO&gt; tokenReqInfo</title>
+         <para>
+Token Request Info
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.45</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="vendorInformation"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.vendorInformation">
+         <title>public String vendorInformation</title>
+         <para>
+Vendor Information
+ </para>
+         <para>
+ Used for vendor specific information. No procedure is defined for the
+ parameter.</para>
+      </section>
+      <section xreflabel="ResponsePrimitiveDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.ResponsePrimitiveDTO.ResponsePrimitiveDTO--">
+         <title>public  ResponsePrimitiveDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="ResponseTypeInfoDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.ResponseTypeInfoDTO">
+      <title>public class ResponseTypeInfoDTO<?line-break?> extends DTO</title>
+      <para>
+DTO expresses ResponseTypeInfo
+   </para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.30</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="notificationURI"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponseTypeInfoDTO.notificationURI">
+         <title>public List&lt;String&gt; notificationURI</title>
+         <para>
+Notification URI
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.5.30</link>, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 7.5.1.2.5</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="responseTypeValue"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.ResponseTypeInfoDTO.responseTypeValue">
+         <title>public ResponseType responseTypeValue</title>
+         <para>
+Response Type Value
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oneM2M
+      TS-0004 6.3.4.2.6</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="ResponseTypeInfoDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.ResponseTypeInfoDTO.ResponseTypeInfoDTO--">
+         <title>public  ResponseTypeInfoDTO()</title>
+         <para/>
+      </section>
+   </section>
+   <section xreflabel="SecurityInfoDTO"
+            role="class"
+            xml:id="org.osgi.service.onem2m.dto.SecurityInfoDTO">
+      <title>public class SecurityInfoDTO<?line-break?> extends DTO</title>
+      <para>
+DTO expresses Security Info.
+ </para>
+      <para>
+ This class is used as union. SecurityInfoType field indicates which type of
+ content is stored.</para>
+      <formalpara role="parameter">
+         <title>See Also</title>
+         <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oenM2M
+      TS-0004 6.3.5.48</link>
+         </para>
+      </formalpara>
+      <formalpara role="parameter">
+         <title>Concurrency</title>
+         <para>Not Thread-safe </para>
+      </formalpara>
+      <section xreflabel="dasRequest"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.SecurityInfoDTO.dasRequest">
+         <title>public GenericDTO dasRequest</title>
+         <para>
+Das Request
+   </para>
+      </section>
+      <section xreflabel="dasResponse"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.SecurityInfoDTO.dasResponse">
+         <title>public GenericDTO dasResponse</title>
+         <para>
+Das Response
+   </para>
+      </section>
+      <section xreflabel="escertkeMessage"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.SecurityInfoDTO.escertkeMessage">
+         <title>public byte[][] escertkeMessage</title>
+         <para>
+Escertke Message
+   </para>
+      </section>
+      <section xreflabel="esprimObject"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.SecurityInfoDTO.esprimObject">
+         <title>public String esprimObject</title>
+         <para>
+Esprim Object
+   </para>
+      </section>
+      <section xreflabel="esprimRandObject"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.SecurityInfoDTO.esprimRandObject">
+         <title>public GenericDTO esprimRandObject</title>
+         <para>
+Esprim Rand Object
+   </para>
+      </section>
+      <section xreflabel="securityInfoType"
+               role="field"
+               xml:id="org.osgi.service.onem2m.dto.SecurityInfoDTO.securityInfoType">
+         <title>public SecurityInfoType securityInfoType</title>
+         <para>
+Security Info Type
+   </para>
+         <formalpara role="parameter">
+            <title>See Also</title>
+            <para>
+               <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="http://www.onem2m.org/images/files/deliverables/Release3/TS-0004_Service_Layer_Core_Protocol_V3_11_2.pdf">oenM2M
+      TS-0004 6.3.4.2.35</link>
+            </para>
+         </formalpara>
+      </section>
+      <section xreflabel="SecurityInfoDTO()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.dto.SecurityInfoDTO.SecurityInfoDTO--">
+         <title>public  SecurityInfoDTO()</title>
+         <para/>
+      </section>
+   </section>
+</section>

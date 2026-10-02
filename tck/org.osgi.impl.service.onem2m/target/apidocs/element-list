@@ -1,0 +1,4 @@
+org.osgi.impl.service.onem2m
+org.osgi.impl.service.onem2m.protocol
+org.osgi.impl.service.onem2m.protocol.service
+org.osgi.impl.service.onem2m.serialization

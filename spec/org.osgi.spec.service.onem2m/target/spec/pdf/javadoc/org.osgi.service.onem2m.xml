@@ -1,0 +1,339 @@
+<section xmlns="http://docbook.org/ns/docbook"
+         xreflabel="org.osgi.service.onem2m"
+         version="5"
+         role="package"
+         xml:id="org.osgi.service.onem2m">
+   <title>org.osgi.service.onem2m</title>
+   <info>
+      <releaseinfo xml:id="org.osgi.service.onem2m-version">Version 1.0</releaseinfo>
+      <edition xml:id="org.osgi.service.onem2m-version.number">1.0</edition>
+   </info>
+   <para>
+Service Layer API for oneM2M Specification Package Version 1.0.
+ </para>
+   <para>
+ Bundles wishing to use this package must list the package in the
+ Import-Package header of the bundle's manifest. This package has two types of
+ users: the consumers that use the API in this package and the providers that
+ implement the API in this package.
+ </para>
+   <para>
+ Example import for consumers using the API in this package:
+ </para>
+   <para>
+ {@code  Import-Package: org.osgi.service.onem2m; version="[1.0,2.0)"}
+ </para>
+   <para>
+ Example import for providers implementing the API in this package:
+ </para>
+   <para>
+ {@code  Import-Package: org.osgi.service.onem2m; version="[1.0,1.1)"}</para>
+   <section role="summary">
+      <title>Summary</title>
+      <itemizedlist>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.NotificationListener">
+                  <code>NotificationListener</code>
+               </link> - 
+Interface to receive notification from other oneM2M entities.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.OneM2MException">
+                  <code>OneM2MException</code>
+               </link> - 
+General Exception for oneM2M.
+   </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="org.osgi.service.onem2m.ServiceLayer">
+                  <code>ServiceLayer</code>
+               </link> - 
+Primary Interface for an oneM2M application entity to send request and get
+ response to/from other oneM2M entity.
+   </para>
+         </listitem>
+      </itemizedlist>
+   </section>
+   <section xreflabel="NotificationListener"
+            role="class"
+            xml:id="org.osgi.service.onem2m.NotificationListener">
+      <title>public abstract NotificationListener</title>
+      <para>
+Interface to receive notification from other oneM2M entities.
+ </para>
+      <para>
+ Application that receives notification must implement this interface and
+ register to OSGi service registry. No service property is required.</para>
+      <section xreflabel="notified(RequestPrimitiveDTO)"
+               role="method"
+               xml:id="org.osgi.service.onem2m.NotificationListener.notified-RequestPrimitiveDTO-">
+         <title>public abstract void notified(RequestPrimitiveDTO request)</title>
+         <formalpara role="parameter">
+            <title>request</title>
+            <para>request primitive</para>
+         </formalpara>
+         <para role="description">
+receive notification.
+   </para>
+      </section>
+   </section>
+   <section xreflabel="OneM2MException"
+            role="class"
+            xml:id="org.osgi.service.onem2m.OneM2MException">
+      <title>public class OneM2MException<?line-break?> extends IOException</title>
+      <para>
+General Exception for oneM2M.
+   </para>
+      <section xreflabel="OneM2MException(String,int)"
+               role="method"
+               xml:id="org.osgi.service.onem2m.OneM2MException.OneM2MException-String-int-">
+         <title>public  OneM2MException(String message, int errorCode)</title>
+         <formalpara role="parameter">
+            <title>message</title>
+            <para>The exception message.</para>
+         </formalpara>
+         <formalpara role="parameter">
+            <title>errorCode</title>
+            <para>The exception error code.</para>
+         </formalpara>
+         <para role="description">
+Construct a OneM2MException with a message and an error code.
+   </para>
+      </section>
+      <section xreflabel="getErrorCode()"
+               role="method"
+               xml:id="org.osgi.service.onem2m.OneM2MException.getErrorCode--">
+         <title>public int getErrorCode()</title>
+         <para role="description">
+Return the error code for the exception.
+   </para>
+         <formalpara role="parameter">
+            <title>Returns</title>
+            <para>The error code for the exception.</para>
+         </formalpara>
+      </section>
+   </section>
+   <section xreflabel="ServiceLayer"
+            role="class"
+            xml:id="org.osgi.service.onem2m.ServiceLayer">
+      <title>public abstract ServiceLayer</title>
+      <para>
+Primary Interface for an oneM2M application entity to send request and get
+ response to/from other oneM2M entity.
+ </para>
+      <para>
+ It contains low level API and high level API. The only low level method is
+ request() and other methods are categorized as high level API.</para>
+      <formalpara role="parameter">
+         <title>Provider Type</title>
+         <para>Consumers of this API must not implement this type</para>
+      </formalpara>
+      <section xreflabel="create(String,ResourceDTO)"
+               role="method"
+               xml:id="org.osgi.service.onem2m.ServiceLayer.create-String-ResourceDTO-">
+         <title>public abstract Promise&lt;ResourceDTO&gt; create(String uri, ResourceDTO resource)</title>
+         <formalpara role="parameter">
+            <title>uri</title>
+            <para>URI for parent resource of the resource being created.</para>
+         </formalpara>
+         <formalpara role="parameter">
+            <title>resource</title>
+            <para>resource data</para>
+         </formalpara>
+         <para role="description">
+create resource
+ </para>
+         <para>
+ The create() method is a method to create new resource under specified
+ uri. The second argument resource is expression of resource to be
+ generated. The resourceType field of the resourceDTO must be assigned.
+ For other fields depends on resource type. Section 7.4 of TS-00004
+ specifies the optionalities of the fields.</para>
+         <formalpara role="parameter">
+            <title>Returns</title>
+            <para>Promise of created resource</para>
+         </formalpara>
+      </section>
+      <section xreflabel="delete(String)"
+               role="method"
+               xml:id="org.osgi.service.onem2m.ServiceLayer.delete-String-">
+         <title>public abstract Promise&lt;Boolean&gt; delete(String uri)</title>
+         <formalpara role="parameter">
+            <title>uri</title>
+            <para>target URI for deleting resource</para>
+         </formalpara>
+         <para role="description">
+delete resource
+ </para>
+         <para>
+ delete resource on the URI specified by uri argument.</para>
+         <formalpara role="parameter">
+            <title>Returns</title>
+            <para>promise of execution status</para>
+         </formalpara>
+      </section>
+      <section xreflabel="discovery(String,FilterCriteriaDTO)"
+               role="method"
+               xml:id="org.osgi.service.onem2m.ServiceLayer.discovery-String-FilterCriteriaDTO-">
+         <title>public abstract Promise&lt;List&lt;String&gt;&gt; discovery(String uri, FilterCriteriaDTO fc)</title>
+         <formalpara role="parameter">
+            <title>uri</title>
+            <para>URI for resource tree to start the search</para>
+         </formalpara>
+         <formalpara role="parameter">
+            <title>fc</title>
+            <para>filter criteria selecting resources</para>
+         </formalpara>
+         <para role="description">
+find resources with filter condition specified in fc argument.
+ </para>
+         <para>
+ Discovery Result Type is kept as blank and default value of target CSE is
+ used for the parameter.</para>
+         <formalpara role="parameter">
+            <title>Returns</title>
+            <para>list of URIs matching the condition specified in fc</para>
+         </formalpara>
+      </section>
+      <section xreflabel="discovery(String,FilterCriteriaDTO,DesiredIdentifierResultType)"
+               role="method"
+               xml:id="org.osgi.service.onem2m.ServiceLayer.discovery-String-FilterCriteriaDTO-DesiredIdentifierResultType-">
+         <title>public abstract Promise&lt;List&lt;String&gt;&gt; discovery(String uri, FilterCriteriaDTO fc, DesiredIdentifierResultType drt)</title>
+         <formalpara role="parameter">
+            <title>uri</title>
+            <para>URI for resource tree to start the search</para>
+         </formalpara>
+         <formalpara role="parameter">
+            <title>fc</title>
+            <para>filter criteria</para>
+         </formalpara>
+         <formalpara role="parameter">
+            <title>drt</title>
+            <para>Discovery Result Type (structured/unstructured)</para>
+         </formalpara>
+         <para role="description">
+find resources with filter condition specified in fc argument.
+ </para>
+         <para>
+ With this method application can specify desired identifier in result</para>
+         <formalpara role="parameter">
+            <title>Returns</title>
+            <para>list of URIs matching the condition specified in fc</para>
+         </formalpara>
+      </section>
+      <section xreflabel="notify(String,NotificationDTO)"
+               role="method"
+               xml:id="org.osgi.service.onem2m.ServiceLayer.notify-String-NotificationDTO-">
+         <title>public abstract Promise&lt;Boolean&gt; notify(String uri, NotificationDTO notification)</title>
+         <formalpara role="parameter">
+            <title>uri</title>
+            <para>uri of destination</para>
+         </formalpara>
+         <formalpara role="parameter">
+            <title>notification</title>
+            <para>content of notification</para>
+         </formalpara>
+         <para role="description">
+send notification
+ </para>
+         <para/>
+         <formalpara role="parameter">
+            <title>Returns</title>
+            <para>Promise of notification execution status</para>
+         </formalpara>
+      </section>
+      <section xreflabel="request(RequestPrimitiveDTO)"
+               role="method"
+               xml:id="org.osgi.service.onem2m.ServiceLayer.request-RequestPrimitiveDTO-">
+         <title>public abstract Promise&lt;ResponsePrimitiveDTO&gt; request(RequestPrimitiveDTO request)</title>
+         <formalpara role="parameter">
+            <title>request</title>
+            <para>request primitive</para>
+         </formalpara>
+         <para role="description">
+send a request and receive response.
+ </para>
+         <para>
+ This method allows very raw data type access and it enables all possible
+ message exchanges among oneM2M entities. This is called the low level
+ API. This method allows all possible operation of oneM2M. For the return
+ type, OSGi Promise is used for allowing synchronous and asynchronous
+ calling manner.</para>
+         <formalpara role="parameter">
+            <title>Returns</title>
+            <para>promise of ResponseDTO.</para>
+         </formalpara>
+      </section>
+      <section xreflabel="retrieve(String)"
+               role="method"
+               xml:id="org.osgi.service.onem2m.ServiceLayer.retrieve-String-">
+         <title>public abstract Promise&lt;ResourceDTO&gt; retrieve(String uri)</title>
+         <formalpara role="parameter">
+            <title>uri</title>
+            <para>URI for retrieving resource</para>
+         </formalpara>
+         <para role="description">
+retrieve resource
+ </para>
+         <para>
+ retrieve resource on URI specified by uri argument. This method retrieve
+ all attributes of the resource.</para>
+         <formalpara role="parameter">
+            <title>Returns</title>
+            <para>retrieved resource data</para>
+         </formalpara>
+      </section>
+      <section xreflabel="retrieve(String,List)"
+               role="method"
+               xml:id="org.osgi.service.onem2m.ServiceLayer.retrieve-String-List-">
+         <title>public abstract Promise&lt;ResourceDTO&gt; retrieve(String uri, List&lt;String&gt; targetAttributes)</title>
+         <formalpara role="parameter">
+            <title>uri</title>
+            <para>URI for retrieving resource</para>
+         </formalpara>
+         <formalpara role="parameter">
+            <title>targetAttributes</title>
+            <para>names of the target attribute</para>
+         </formalpara>
+         <para role="description">
+retrieve resource with selected attributes.
+ </para>
+         <para>
+ retrieve resource on URI specified by uri argument. This method retrieve
+ selected attributes by targetAttributes argument. The retrieve() methods
+ are methods to retrieve resource on URI specified by uri argument.</para>
+         <formalpara role="parameter">
+            <title>Returns</title>
+            <para>retrieved resource data</para>
+         </formalpara>
+      </section>
+      <section xreflabel="update(String,ResourceDTO)"
+               role="method"
+               xml:id="org.osgi.service.onem2m.ServiceLayer.update-String-ResourceDTO-">
+         <title>public abstract Promise&lt;ResourceDTO&gt; update(String uri, ResourceDTO resource)</title>
+         <formalpara role="parameter">
+            <title>uri</title>
+            <para>URI for updating resource</para>
+         </formalpara>
+         <formalpara role="parameter">
+            <title>resource</title>
+            <para>data resource</para>
+         </formalpara>
+         <para role="description">
+update resource
+ </para>
+         <para>
+ The update() method is a method to update resource on the URI specified
+ by uri argument. The resource argument holds attributes to be updated.
+ Attributes not to be updated shall not included in the argument.</para>
+         <formalpara role="parameter">
+            <title>Returns</title>
+            <para>updated resource</para>
+         </formalpara>
+      </section>
+   </section>
+</section>

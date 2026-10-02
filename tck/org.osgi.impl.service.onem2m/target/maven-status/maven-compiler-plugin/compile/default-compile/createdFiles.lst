@@ -1,0 +1,11 @@
+org/osgi/impl/service/onem2m/protocol/service/CseService.class
+org/osgi/impl/service/onem2m/protocol/service/ServiceLayerImplService$1.class
+org/osgi/impl/service/onem2m/protocol/service/ServiceLayerImplService.class
+org/osgi/impl/service/onem2m/serialization/BaseSerialize.class
+org/osgi/impl/service/onem2m/protocol/service/ServiceLayerImplService$LowLevelThread.class
+org/osgi/impl/service/onem2m/ServiceLayerFactoryImpl.class
+org/osgi/impl/service/onem2m/protocol/service/NotificationService.class
+org/osgi/impl/service/onem2m/protocol/service/ServiceLayerImplService$HighLevelThread.class
+org/osgi/impl/service/onem2m/Activator.class
+org/osgi/impl/service/onem2m/protocol/ServiceLayerUtil.class
+org/osgi/impl/service/onem2m/serialization/LongShortConverter.class
