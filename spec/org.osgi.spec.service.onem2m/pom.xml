@@ -12,7 +12,7 @@
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<artifactId>org.osgi.spec.service.onem2m</artifactId>
-	<name>OSGi Specification repo for org.osgi.service.onem2m</name>
+	<name>Service Layer API for oneM2M</name>
 
 	<dependencies>
 		<dependency>
