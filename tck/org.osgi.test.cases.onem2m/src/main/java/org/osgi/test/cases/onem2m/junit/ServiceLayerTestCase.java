@@ -17,9 +17,8 @@
  *******************************************************************************/
 package org.osgi.test.cases.onem2m.junit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 import static org.osgi.service.onem2m.dto.Constants.RT_AE;
 import static org.osgi.service.onem2m.dto.Constants.RT_CSEBase;
 import static org.osgi.service.onem2m.dto.Constants.RT_container;
@@ -32,22 +31,22 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.onem2m.NotificationListener;
 import org.osgi.service.onem2m.OneM2MException;
 import org.osgi.service.onem2m.ServiceLayer;
-import org.osgi.service.onem2m.dto.FilterCriteriaDTO;
 import org.osgi.service.onem2m.dto.FilterCriteriaDTO.FilterUsage;
+import org.osgi.service.onem2m.dto.FilterCriteriaDTO;
 import org.osgi.service.onem2m.dto.NotificationDTO;
 import org.osgi.service.onem2m.dto.NotificationEventDTO;
 import org.osgi.service.onem2m.dto.RequestPrimitiveDTO;
 import org.osgi.service.onem2m.dto.ResourceDTO;
-import org.osgi.test.support.junit4.AbstractOSGiTestCase;
+import org.osgi.test.common.annotation.InjectBundleContext;
 import org.osgi.util.promise.Promise;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,7 +58,10 @@ import org.slf4j.LoggerFactory;
  * tree.
  * 
  */
-public class ServiceLayerTestCase extends AbstractOSGiTestCase {
+public class ServiceLayerTestCase {
+
+	@InjectBundleContext
+	BundleContext			context;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ServiceLayerTestCase.class);
 
@@ -67,7 +69,7 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 	// private String uri = null;
 	private BundleContext con = null;
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		if (serviceLayerService == null) {
 //			try {
@@ -77,19 +79,19 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 //				fail();
 //				return;
 //			}
-			con = getContext();
+			con = context;
 			// Get ServiceLayerFactory
 			ServiceReference<?> serviceLayerFactory = con.getServiceReference(ServiceLayer.class.getName());
 			serviceLayerService = (ServiceLayer) con.getService(serviceLayerFactory);
 
 			if (serviceLayerService == null) {
-				fail();
+				fail("");
 				return;
 			}
 		}
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() throws Exception {
 		cleanup();
 	}
@@ -106,22 +108,22 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 			res = serviceLayerService.retrieve("-").getValue();
 		} catch (Exception e) {
 			e.printStackTrace();
-			assertNotNull(null);// TODO
+			assertThat((Object) null).isNotNull();// TODO
 			res = null;
 		}
 
 		// Check result
 		LOGGER.info("Response Data:\n" + res.toString());
 
-		assertNotNull("Response is Null.", res);
-		assertEquals(res.resourceType.intValue(), RT_CSEBase);
-		assertNotNull("ResourceID is Null.", res.resourceID);
-		assertNotNull("LastModifiedTime is Null", res.lastModifiedTime);
-		assertNotNull("CreationTime is Null.", res.creationTime);
+		assertThat(res).as("Response is Null.").isNotNull();
+		assertThat(RT_CSEBase).isEqualTo(res.resourceType.intValue());
+		assertThat(res.resourceID).as("ResourceID is Null.").isNotNull();
+		assertThat(res.lastModifiedTime).as("LastModifiedTime is Null").isNotNull();
+		assertThat(res.creationTime).as("CreationTime is Null.").isNotNull();
 
-		assertNotNull("CSE attribute is null.", res.attribute);
+		assertThat(res.attribute).as("CSE attribute is null.").isNotNull();
 		String cseid = (String) res.attribute.get("CSE-ID");
-		assertNotNull("CSE-ID is null.", cseid);
+		assertThat(cseid).as("CSE-ID is null.").isNotNull();
 		String csebaseName = res.resourceName;
 
 		try {
@@ -129,46 +131,46 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 			res = serviceLayerService.retrieve("/" + cseid + "/-").getValue();
 		} catch (Exception e) {
 			e.printStackTrace();
-			assertNotNull(null);// TODO
+			assertThat((Object) null).isNotNull();// TODO
 			res = null;
 		}
 
 		// Check result
 		LOGGER.info("Response Data:\n" + res.toString());
 
-		assertNotNull("Response is Null.", res);
-		assertEquals(res.resourceType.intValue(), RT_CSEBase);
-		assertNotNull("ResourceID is Null.", res.resourceID);
-		assertNotNull("LastModifiedTime is Null", res.lastModifiedTime);
-		assertNotNull("CreationTime is Null.", res.creationTime);
+		assertThat(res).as("Response is Null.").isNotNull();
+		assertThat(RT_CSEBase).isEqualTo(res.resourceType.intValue());
+		assertThat(res.resourceID).as("ResourceID is Null.").isNotNull();
+		assertThat(res.lastModifiedTime).as("LastModifiedTime is Null").isNotNull();
+		assertThat(res.creationTime).as("CreationTime is Null.").isNotNull();
 
-		assertNotNull("CSE's attribute is null.", res.attribute);
+		assertThat(res.attribute).as("CSE's attribute is null.").isNotNull();
 		String cseid2 = (String) res.attribute.get("CSE-ID");
-		assertNotNull("CSE-ID is null.", cseid2);
-		assertEquals(cseid, cseid2);
+		assertThat(cseid2).as("CSE-ID is null.").isNotNull();
+		assertThat(cseid2).isEqualTo(cseid);
 
 		try {
 			// retrieve regular SP-relative name.
 			res = serviceLayerService.retrieve("/" + cseid + "/" + csebaseName).getValue();
 		} catch (Exception e) {
 			e.printStackTrace();
-			assertNotNull(null);// TODO
+			assertThat((Object) null).isNotNull();// TODO
 			res = null;
 		}
 
 		// Check result
 		LOGGER.info("Response Data:\n" + res.toString());
 
-		assertNotNull("Response is Null.", res);
-		assertEquals(res.resourceType.intValue(), RT_CSEBase);
-		assertNotNull("ResourceID is Null.", res.resourceID);
-		assertNotNull("LastModifiedTime is Null", res.lastModifiedTime);
-		assertNotNull("CreationTime is Null.", res.creationTime);
+		assertThat(res).as("Response is Null.").isNotNull();
+		assertThat(RT_CSEBase).isEqualTo(res.resourceType.intValue());
+		assertThat(res.resourceID).as("ResourceID is Null.").isNotNull();
+		assertThat(res.lastModifiedTime).as("LastModifiedTime is Null").isNotNull();
+		assertThat(res.creationTime).as("CreationTime is Null.").isNotNull();
 
-		assertNotNull("CSE's attribute is null.", res.attribute);
+		assertThat(res.attribute).as("CSE's attribute is null.").isNotNull();
 		String cseid3 = (String) res.attribute.get("CSE-ID");
-		assertNotNull("CSE-ID is null.", cseid3);
-		assertEquals(cseid, cseid3);
+		assertThat(cseid3).as("CSE-ID is null.").isNotNull();
+		assertThat(cseid3).isEqualTo(cseid);
 
 		LOGGER.info("----RETRIEVE Test 1 is complete----");
 	}
@@ -188,7 +190,7 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		}
 
 		// Check result
-		assertEquals(null, res);
+		assertThat(res).isNull();
 
 		LOGGER.info("----RETRIEVE Test 2 is complete----");
 	}
@@ -211,11 +213,11 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		}
 
 		// Check result
-		assertNotNull("Response is Null.", res);
-		assertEquals(req.resourceName, res.resourceName);
-		assertNotNull("ResourceID IS  is Null.", res.resourceID);
-		assertNotNull("LastModifiedTime is Null", res.lastModifiedTime);
-		assertNotNull("CreationTime is Null.", res.creationTime);
+		assertThat(res).as("Response is Null.").isNotNull();
+		assertThat(res.resourceName).isEqualTo(req.resourceName);
+		assertThat(res.resourceID).as("ResourceID IS  is Null.").isNotNull();
+		assertThat(res.lastModifiedTime).as("LastModifiedTime is Null").isNotNull();
+		assertThat(res.creationTime).as("CreationTime is Null.").isNotNull();
 
 		LOGGER.info("----CREATE Test 1 is complete----");
 	}
@@ -248,16 +250,16 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		} catch (Exception e) {
 			LOGGER.warn("Exception Caught ex:" + e);
 			e.printStackTrace();
-			fail();
+			fail("");
 		}
 
 		// Check result
 
 		// assertNull(res);
-		assertNotNull(th);
-		assertEquals(OneM2MException.class, th.getClass());
+		assertThat(th).isNotNull();
+		assertThat(th.getClass()).isEqualTo(OneM2MException.class);
 		OneM2MException oex = (OneM2MException) th;
-		assertEquals(4105, oex.getErrorCode());
+		assertThat(oex.getErrorCode()).isEqualTo(4105);
 
 		LOGGER.info("----CREATE Test 2 is complete----");
 	}
@@ -283,7 +285,7 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		}
 
 		// Check result
-		assertEquals(null, res);// TODO check return code.
+		assertThat(res).isNull();// TODO check return code.
 
 		LOGGER.info("----CREATE Test 3 is complete----");
 	}
@@ -309,14 +311,14 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		}
 
 		// Check result
-		assertNotNull("Response is Null.", res);
-		assertEquals(r.resourceName, res.resourceName);
-		assertNotNull("ResourceID IS  is Null.", res.resourceID);
-		assertNotNull("LastModifiedTime is Null", res.lastModifiedTime);
-		assertNotNull("CreationTime is Null.", res.creationTime);
-		assertNotNull("pointOfAccess is Null.", res.attribute.get("pointOfAccess"));
-		assertNotNull("AE-ID is Null.", res.attribute.get("AE-ID"));
-		assertNotNull("CreationTime is Null.", res.creationTime);
+		assertThat(res).as("Response is Null.").isNotNull();
+		assertThat(res.resourceName).isEqualTo(r.resourceName);
+		assertThat(res.resourceID).as("ResourceID IS  is Null.").isNotNull();
+		assertThat(res.lastModifiedTime).as("LastModifiedTime is Null").isNotNull();
+		assertThat(res.creationTime).as("CreationTime is Null.").isNotNull();
+		assertThat(res.attribute.get("pointOfAccess")).as("pointOfAccess is Null.").isNotNull();
+		assertThat(res.attribute.get("AE-ID")).as("AE-ID is Null.").isNotNull();
+		assertThat(res.creationTime).as("CreationTime is Null.").isNotNull();
 
 		LOGGER.info("----CREATE Test 4 is complete----");
 	}
@@ -336,7 +338,7 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		try {
 			res = serviceLayerService.create(uri, req).getValue();
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 		System.out.println(res.toString());
 
@@ -356,7 +358,7 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 			Thread.sleep(1200);// to ensure second digit to change
 			serviceLayerService.update(uri, req2).getValue();
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 
 		LOGGER.info("finished first update");// TODO remove this.
@@ -369,21 +371,21 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		try {
 			res3 = serviceLayerService.retrieve(uri).getValue();
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 
 		// Check result
 		System.out.println(res3.toString());
-		assertEquals(res.resourceName, res3.resourceName);
-		assertEquals(res.resourceType, res3.resourceType);
-		assertEquals(res.resourceID, res3.resourceID);
-		assertEquals(res.creationTime, res3.creationTime);
+		assertThat(res3.resourceName).isEqualTo(res.resourceName);
+		assertThat(res3.resourceType).isEqualTo(res.resourceType);
+		assertThat(res3.resourceID).isEqualTo(res.resourceID);
+		assertThat(res3.creationTime).isEqualTo(res.creationTime);
 		if (res.lastModifiedTime.equals(res3.lastModifiedTime)) {
 			LOGGER.warn("modification time is expected changed." + " before:" + res.lastModifiedTime + " after:"
 					+ res3.lastModifiedTime);
-			fail();
+			fail("");
 		}
-		assertEquals(lblText, ((List<String>) res3.attribute.get("labels")).get(0));
+		assertThat(((List<String>) res3.attribute.get("labels")).get(0)).isEqualTo(lblText);
 
 		LOGGER.info("----Update Test 1 is complete----");
 	}
@@ -410,7 +412,7 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		}
 
 		// Check result
-		assertEquals(null, res);
+		assertThat(res).isNull();
 
 		LOGGER.info("----Update Test 2 is complete----");
 	}
@@ -428,17 +430,17 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		try {
 			serviceLayerService.create(uri, req).getValue();
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 
 		uri = "-/deleteCnt";
 
 		try {
 			if (!serviceLayerService.delete(uri).getValue()) {
-				fail();
+				fail("");
 			}
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 
 		LOGGER.info("----Delete Test 1 is complete----");
@@ -452,10 +454,10 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 
 		try {
 			if (serviceLayerService.delete(uri).getValue()) {
-				fail();
+				fail("");
 			}
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 
 		LOGGER.info("----Delete Test 2 is complete----");
@@ -474,7 +476,7 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		try {
 			serviceLayerService.create(uri, req1).getValue();
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 
 		ResourceDTO req2 = new ResourceDTO();
@@ -486,7 +488,7 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		try {
 			serviceLayerService.create(uri, req2).getValue();
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 
 		ResourceDTO req3 = new ResourceDTO();
@@ -498,7 +500,7 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		try {
 			serviceLayerService.create(uri, req3).getValue();
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 
 		List<String> uril = null;
@@ -509,7 +511,7 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		try {
 			uril = serviceLayerService.discovery(uri, fc).getValue();
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 
 		for (String u : uril) {
@@ -523,7 +525,7 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 			case "disCnt1/disCnt3":
 				break;
 			default:
-				fail();
+				fail("");
 			}
 		}
 
@@ -543,10 +545,10 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		try {
 			uril = serviceLayerService.discovery(uri, fc).getValue();
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 
-		assertEquals(null, uril);
+		assertThat(uril).isNull();
 
 		LOGGER.info("----Discovery Test 2 is complete----");
 	}
@@ -588,14 +590,14 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 			ret = pb.getValue();
 		} catch (InvocationTargetException e1) {
 			e1.printStackTrace();
-			fail();
+			fail("");
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
-			fail();
+			fail("");
 		}
 
-		assertEquals(true, ret);
-		assertEquals(false, set.isEmpty());
+		assertThat(ret).isTrue();
+		assertThat(set).isNotEmpty();
 
 		reg.unregister();
 		LOGGER.info("---- Notify Test 1 is complete----");
@@ -620,14 +622,14 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 			ret = pb.getValue();
 		} catch (InvocationTargetException e1) {
 			e1.printStackTrace();
-			fail();
+			fail("");
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
-			fail();
+			fail("");
 		}
 
-		assertEquals(false, ret);
-		assertEquals(true, set.isEmpty());
+		assertThat(ret).isFalse();
+		assertThat(set).isEmpty();
 
 		reg.unregister();
 		LOGGER.info("---- Notify Test 2 is complete----");
@@ -650,7 +652,7 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		try {
 			r2 = serviceLayerService.create("-", r).getValue();
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 		LOGGER.info("returned resource :" + r2);
 
@@ -664,7 +666,7 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		try {
 			r2 = serviceLayerService.create(uri, sub).getValue();
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 		LOGGER.info("returned resource :" + r2);
 
@@ -683,11 +685,11 @@ public class ServiceLayerTestCase extends AbstractOSGiTestCase {
 		try {
 			r2 = serviceLayerService.update(uri, r).getValue();
 		} catch (Exception e) {
-			fail();
+			fail("");
 		}
 		LOGGER.info("returned resource :" + r2);
 
-		assertEquals(1, set.size());
+		assertThat(set).hasSize(1);
 
 		reg.unregister();
 		LOGGER.info("---- Notify Test 3 is complete----");
