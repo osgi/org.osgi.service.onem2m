@@ -47,6 +47,8 @@ tck.range: ${range;[===,==+);${version_cleanup;${1}}}
 
 # -runbundles is committed and verified by the build; after a dependency
 # change update it with: mvn bnd-resolver:resolve
+# slf4j 2 binds its provider once, at the first logger: slf4j starts at
+# level 1, before the implementation (all others at 2), or it logs nothing.
 -runbundles: \
 	assertj-core;version='${tck.range;${assertj.version}}',\
 	junit-jupiter-api;version='${tck.range;${junit-jupiter.version}}',\
@@ -56,6 +58,7 @@ tck.range: ${range;[===,==+);${version_cleanup;${1}}}
 	junit-platform-engine;version='${tck.range;${junit-platform.version}}',\
 	junit-platform-launcher;version='${tck.range;${junit-platform.version}}',\
 	net.bytebuddy.byte-buddy;version='${tck.range;${byte-buddy.version}}',\
+	org.apache.aries.spifly.dynamic.framework.extension;version='${tck.range;${org.apache.aries.spifly.dynamic.framework.extension.version}}',\
 	org.opentest4j;version='${tck.range;${opentest4j.version}}',\
 	org.osgi.impl.service.onem2m;version='${tck.range;${revision}}',\
 	org.osgi.service.onem2m;version='${tck.range;${revision}}',\
@@ -65,5 +68,5 @@ tck.range: ${range;[===,==+);${version_cleanup;${1}}}
 	org.osgi.test.junit5;version='${tck.range;${osgi-test.version}}',\
 	org.osgi.util.function;version='${tck.range;${org.osgi.util.function.version}}',\
 	org.osgi.util.promise;version='${tck.range;${org.osgi.util.promise.version}}',\
-	slf4j.api;version='${tck.range;${slf4j.version}}',\
-	slf4j.simple;version='${tck.range;${slf4j.version}}'
+	slf4j.api;version='${tck.range;${slf4j.version}}';startlevel=1,\
+	slf4j.simple;version='${tck.range;${slf4j.version}}';startlevel=1
