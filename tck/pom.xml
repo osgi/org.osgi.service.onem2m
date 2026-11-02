@@ -13,11 +13,12 @@
 	<packaging>pom</packaging>
 
 	<properties>
+		<org.apache.aries.spifly.dynamic.framework.extension.version>1.3.8</org.apache.aries.spifly.dynamic.framework.extension.version>
 		<org.eclipse.osgi.version>3.24.300</org.eclipse.osgi.version>
 		<org.osgi.framework.version>1.10.0</org.osgi.framework.version>
 		<org.osgi.util.function.version>1.2.0</org.osgi.util.function.version>
 		<org.osgi.util.promise.version>1.3.0</org.osgi.util.promise.version>
-		<slf4j.version>1.7.36</slf4j.version>
+		<slf4j.version>2.0.20</slf4j.version>
 	</properties>
 
 	<modules>
